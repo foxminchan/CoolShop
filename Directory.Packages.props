@@ -1,0 +1,78 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <AspireVersion>8.2.0</AspireVersion>
+    <AspireUnstablePackagesVersion>8.2.0-preview.1.24428.5</AspireUnstablePackagesVersion>
+    <ApiVersioningVersion>8.1.0</ApiVersioningVersion>
+    <DaprVersion>1.14.0</DaprVersion>
+    <GrpcVersion>2.65.0</GrpcVersion>
+  </PropertyGroup>
+  <!-- Aspire packages -->
+  <ItemGroup>
+    <PackageVersion Include="Aspire.Hosting.Dapr" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Hosting.NodeJs" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Hosting.AppHost" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Hosting.MongoDB" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Hosting.Keycloak" Version="$(AspireUnstablePackagesVersion)" />
+    <PackageVersion Include="Aspire.Keycloak.Authentication" Version="$(AspireUnstablePackagesVersion)" />
+    <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.MongoDB.Driver" Version="$(AspireVersion)" />
+  </ItemGroup>
+  <!-- Microsoft packages -->
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.8.0" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="8.2.0" />
+  </ItemGroup>
+  <!-- Entity Framework Core -->
+  <ItemGroup>
+    <PackageVersion Include="EFCore.NamingConventions" Version="8.0.3" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8" />
+    <PackageVersion Include="EntityFrameworkCore.Exceptions.Common" Version="8.1.3" />
+    <PackageVersion Include="EntityFrameworkCore.Exceptions.PostgreSQL" Version="8.1.3" />
+  </ItemGroup>
+  <!-- ASP.NET Core -->
+  <ItemGroup>
+    <PackageVersion Include="Asp.Versioning.Http.Client" Version="$(ApiVersioningVersion)" />
+    <PackageVersion Include="Asp.Versioning.Mvc" Version="$(ApiVersioningVersion)" />
+    <PackageVersion Include="Asp.Versioning.Mvc.ApiExplorer" Version="$(ApiVersioningVersion)" />
+  </ItemGroup>
+  <!-- Ardalis -->
+  <ItemGroup>
+    <PackageVersion Include="Ardalis.GuardClauses" Version="4.6.0" />
+    <PackageVersion Include="Ardalis.Result.AspNetCore" Version="9.1.0" />
+    <PackageVersion Include="Ardalis.Specification" Version="8.0.0" />
+    <PackageVersion Include="Ardalis.Specification.EntityFrameworkCore" Version="8.0.0" />
+  </ItemGroup>
+  <!-- OpenTelemetry packages -->
+  <ItemGroup>
+    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.9.0-beta.1" />
+  </ItemGroup>
+  <!-- Dapr -->
+  <ItemGroup>
+    <PackageVersion Include="Dapr.Workflow" Version="$(DaprVersion)" />
+    <PackageVersion Include="Dapr.AspNetCore" Version="$(DaprVersion)" />
+    <PackageVersion Include="Dapr.Actors.AspNetCore" Version="$(DaprVersion)" />
+  </ItemGroup>
+  <!-- Grpc -->
+  <ItemGroup>
+    <PackageVersion Include="Grpc.AspNetCore" Version="$(GrpcVersion)" />
+    <PackageVersion Include="Grpc.AspNetCore.Server.ClientFactory" Version="$(GrpcVersion)" />
+    <PackageVersion Include="Grpc.Tools" Version="$(GrpcVersion)" PrivateAssets="All" />
+  </ItemGroup>
+  <!-- Miscellaneous -->
+  <ItemGroup>
+    <PackageVersion Include="Scrutor" Version="4.2.2" />
+    <PackageVersion Include="MediatR" Version="12.4.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+    <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.1" />
+    <PackageVersion Include="MicroElements.Swashbuckle.FluentValidation" Version="6.0.0" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,11 @@
+{
+  "name": "coolshop",
+  "version": "1.0.0",
+  "author": "Nhan Nguyen",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
+    "husky": "^9.1.5"
+  }
+}

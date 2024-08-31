@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>590aeb9b-0238-45a9-97c5-310256802a97</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" />
+    <PackageReference Include="Aspire.Hosting.Dapr" />
+    <PackageReference Include="Aspire.Hosting.NodeJs" />
+    <PackageReference Include="Aspire.Hosting.MongoDB" />
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" />
+    <PackageReference Include="Aspire.Hosting.Keycloak" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoolShop.Cart\CoolShop.Cart.csproj" />
+    <ProjectReference Include="..\CoolShop.Catalog\CoolShop.Catalog.csproj" />
+    <ProjectReference Include="..\CoolShop.Inventory\CoolShop.Inventory.csproj" />
+    <ProjectReference Include="..\CoolShop.Ordering\CoolShop.Ordering.csproj" />
+    <ProjectReference Include="..\CoolShop.Rating\CoolShop.Rating.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoolShop.Constants\CoolShop.Constants.csproj" IsAspireProjectResource="false" />
+    <ProjectReference Include="..\CoolShop.Krakend.Hosting\CoolShop.Krakend.Hosting.csproj"
+                      IsAspireProjectResource="false" />
+    <ProjectReference Include="..\CoolShop.HealthCheck.Hosting\CoolShop.HealthCheck.Hosting.csproj"
+                      IsAspireProjectResource="false" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />
+    <PackageReference Include="EFCore.NamingConventions" />
+    <PackageReference Include="EntityFrameworkCore.Exceptions.PostgreSQL" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Shared\ActivityExtensions.cs" Link="Data\ActivityExtensions.cs" />
+    <Compile Include="..\Shared\MigrateDbContextExtensions.cs" Link="Data\MigrateDbContextExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoolShop.Constants\CoolShop.Constants.csproj" />
+    <ProjectReference Include="..\CoolShop.Catalog.Domain\CoolShop.Catalog.Domain.csproj" />
+    <ProjectReference Include="..\CoolShop.ServiceDefaults\CoolShop.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+</Project>

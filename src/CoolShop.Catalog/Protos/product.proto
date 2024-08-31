@@ -1,0 +1,31 @@
+syntax = "proto3";  
+
+option csharp_namespace = "CoolShop.Catalog.Grpc";
+
+package CatalogApi;
+
+service Product {
+    rpc GetProduct(ProductRequest) returns (ProductResponse);
+    rpc GetProductStatus(ProductStatusRequest) returns (ProductStatusResponse);
+}
+
+message ProductRequest {
+    string id = 1;
+}
+
+message ProductResponse {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    double price = 4;
+    double discount = 5;
+}
+
+message ProductStatusRequest {
+    string id = 1;
+}
+
+message ProductStatusResponse {
+    string id = 1;
+    string status = 2;
+}

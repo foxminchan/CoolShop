@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoolShop.Core\CoolShop.Core.csproj" />
+  </ItemGroup>
+
+</Project>
