@@ -5,7 +5,6 @@ using Dapr.AppCallback.Autogen.Grpc.v1;
 using Dapr.Client.Autogen.Grpc.v1;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using MediatR;
 
 namespace CoolShop.Catalog.Grpc;
 

@@ -1,7 +1,4 @@
-﻿using CoolShop.Constants;
-using FluentValidation;
-
-namespace CoolShop.Catalog.Application.Categories.Update;
+﻿namespace CoolShop.Catalog.Application.Categories.Update;
 
 public sealed class UpdateCategoryValidator : AbstractValidator<UpdateCategoryCommand>
 {

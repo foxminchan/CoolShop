@@ -1,6 +1,4 @@
-﻿using CoolShop.Constants;
-using CoolShop.Core.SeedWork;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CoolShop.Catalog.Infrastructure.Data.Configurations;

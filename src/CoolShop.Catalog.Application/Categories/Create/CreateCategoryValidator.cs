@@ -1,7 +1,4 @@
-﻿using CoolShop.Constants;
-using FluentValidation;
-
-namespace CoolShop.Catalog.Application.Categories.Create;
+﻿namespace CoolShop.Catalog.Application.Categories.Create;
 
 public sealed class CreateCategoryValidator : AbstractValidator<CreateCategoryCommand>
 {

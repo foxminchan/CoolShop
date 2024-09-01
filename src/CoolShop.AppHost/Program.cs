@@ -39,30 +39,36 @@ var keycloak = builder
     .AddKeycloak("keycloak", 8000, adminUsername, adminPassword)
     .WithDataBindMount("../../mnt/keycloak");
 
-var catalogApi = builder.AddProject<CoolShop_Catalog>("catalog-api")
+var catalogApi = builder
+    .AddProject<CoolShop_Catalog>(ServiceName.AppId.Catalog)
     .WithDaprSidecar(daprOptions)
     .WithReference(catalogDb)
     .WithReference(keycloak);
 
-var inventoryApi = builder.AddProject<CoolShop_Inventory>("inventory-api")
+var inventoryApi = builder
+    .AddProject<CoolShop_Inventory>(ServiceName.AppId.Inventory)
     .WithReference(inventoryDb)
     .WithDaprSidecar(daprOptions);
 
-var cartApi = builder.AddProject<CoolShop_Cart>("cart-api")
+var cartApi = builder
+    .AddProject<CoolShop_Cart>(ServiceName.AppId.Cart)
     .WithDaprSidecar(daprOptions)
     .WithReference(keycloak);
 
-var orderingApi = builder.AddProject<CoolShop_Ordering>("ordering-api")
+var orderingApi = builder
+    .AddProject<CoolShop_Ordering>(ServiceName.AppId.Ordering)
     .WithDaprSidecar(daprOptions)
     .WithReference(orderingDb)
     .WithReference(keycloak);
 
-var ratingApi = builder.AddProject<CoolShop_Rating>("rating-api")
+var ratingApi = builder
+    .AddProject<CoolShop_Rating>(ServiceName.AppId.Rating)
     .WithDaprSidecar(daprOptions)
     .WithReference(ratingDb)
     .WithReference(keycloak);
 
-var promotionApi = builder.AddNpmApp("promotion-api", "../CoolShop.Promotion")
+var promotionApi = builder
+    .AddNpmApp(ServiceName.AppId.Promotion, "../CoolShop.Promotion")
     .WithDaprSidecar(daprOptions)
     .WithReference(promotionDb)
     .WithHttpEndpoint(env: "PORT")

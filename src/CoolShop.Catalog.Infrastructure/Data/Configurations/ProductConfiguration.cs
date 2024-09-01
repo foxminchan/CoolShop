@@ -1,5 +1,4 @@
 ﻿using CoolShop.Catalog.Domain.ProductAggregator;
-using CoolShop.Constants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

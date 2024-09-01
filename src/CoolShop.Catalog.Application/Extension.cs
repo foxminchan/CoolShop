@@ -1,12 +1,4 @@
-﻿using System.Reflection;
-using CoolShop.Shared.ActivityScope;
-using CoolShop.Shared.Metrics;
-using CoolShop.Shared.Pipelines;
-using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-namespace CoolShop.Catalog.Application;
+﻿namespace CoolShop.Catalog.Application;
 
 public static class Extension
 {

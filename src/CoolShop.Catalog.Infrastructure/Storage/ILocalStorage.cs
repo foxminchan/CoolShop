@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace CoolShop.Catalog.Infrastructure.Storage;
+﻿namespace CoolShop.Catalog.Infrastructure.Storage;
 
 public interface ILocalStorage
 {

@@ -1,9 +1,6 @@
-﻿using CoolShop.Constants;
-using CoolShop.Core.SharedKernel;
-using EntityFramework.Exceptions.PostgreSQL;
+﻿using EntityFramework.Exceptions.PostgreSQL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace CoolShop.Catalog.Infrastructure.Data;
 

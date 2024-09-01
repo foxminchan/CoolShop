@@ -1,4 +1,5 @@
 ﻿using CoolShop.Cart.Extensions;
+using CoolShop.Cart.Grpc;
 using CoolShop.ServiceDefaults;
 using CoolShop.Shared.Endpoints;
 
@@ -17,5 +18,7 @@ app.MapDefaultEndpoints();
 app.UseOpenApi();
 
 app.UseCloudEvents();
+
+app.MapGrpcService<BasketService>();
 
 app.Run();

@@ -1,6 +1,4 @@
 ﻿using Ardalis.Specification.EntityFrameworkCore;
-using CoolShop.Core.SeedWork;
-using CoolShop.Core.SharedKernel;
 
 namespace CoolShop.Catalog.Infrastructure.Data;
 

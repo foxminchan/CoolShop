@@ -2,12 +2,14 @@
 
   <ItemGroup>
     <PackageReference Include="Dapr.AspNetCore" />
+    <PackageReference Include="Aspire.Keycloak.Authentication" />
     <PackageReference Include="Grpc.AspNetCore.Server.ClientFactory" />
     <PackageReference Include="Grpc.Tools" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
-    <Protobuf Include="..\CoolShop.Catalog\Protos\product.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\basket.proto" GrpcServices="Server" />
+    <Protobuf Include="..\CoolShop.Catalog\Protos\product.proto" Link="Protos\product.proto" GrpcServices="Client" />
   </ItemGroup>
 
   <ItemGroup>

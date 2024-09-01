@@ -1,7 +1,4 @@
-﻿using CoolShop.Constants;
-using FluentValidation;
-
-namespace CoolShop.Catalog.Application.Brands.Create;
+﻿namespace CoolShop.Catalog.Application.Brands.Create;
 
 public sealed class CreateBrandValidator : AbstractValidator<CreateBrandCommand>
 {

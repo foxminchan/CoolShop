@@ -1,6 +1,4 @@
-﻿using CoolShop.Catalog.Domain;
-using CoolShop.Constants;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CoolShop.Catalog.Infrastructure.Data.Configurations;
 

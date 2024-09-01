@@ -1,6 +1,5 @@
 ﻿using CoolShop.Catalog.Infrastructure.Data;
 using CoolShop.Catalog.Infrastructure.Storage;
-using Microsoft.Extensions.Hosting;
 
 namespace CoolShop.Catalog.Infrastructure;
 

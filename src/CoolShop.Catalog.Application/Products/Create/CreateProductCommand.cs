@@ -1,7 +1,4 @@
-﻿using Ardalis.Result;
-using CoolShop.Catalog.Domain.ProductAggregator;
-using CoolShop.Core.SharedKernel;
-using Microsoft.AspNetCore.Http;
+﻿using CoolShop.Catalog.Domain.ProductAggregator;
 
 namespace CoolShop.Catalog.Application.Products.Create;
 

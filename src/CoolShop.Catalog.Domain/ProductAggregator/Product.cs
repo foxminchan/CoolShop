@@ -1,7 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using CoolShop.Core.SeedWork;
-
-namespace CoolShop.Catalog.Domain.ProductAggregator;
+﻿namespace CoolShop.Catalog.Domain.ProductAggregator;
 
 public sealed class Product : EntityBase, IAggregateRoot, ISoftDelete
 {

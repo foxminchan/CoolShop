@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace CoolShop.Catalog.Application.Products.List;
+﻿namespace CoolShop.Catalog.Application.Products.List;
 
 public sealed class ListProductsValidator : AbstractValidator<ListProductsQuery>
 {

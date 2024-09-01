@@ -1,6 +1,4 @@
-﻿using Ardalis.Result;
-using CoolShop.Catalog.Domain;
-using CoolShop.Core.SharedKernel;
+﻿using CoolShop.Catalog.Domain;
 
 namespace CoolShop.Catalog.Application.Categories.Create;
 

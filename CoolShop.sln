@@ -55,7 +55,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoolShop.Catalog.Infrastruc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rating", "Rating", "{4D9EBA3C-CE97-45E3-8E26-22F90B326855}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolShop.Rating", "src\CoolShop.Rating\CoolShop.Rating.csproj", "{B2FCDF99-C5F5-405C-A147-B4B7565394DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoolShop.Rating", "src\CoolShop.Rating\CoolShop.Rating.csproj", "{B2FCDF99-C5F5-405C-A147-B4B7565394DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

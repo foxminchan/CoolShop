@@ -1,7 +1,4 @@
-﻿using CoolShop.Constants;
-using FluentValidation;
-
-namespace CoolShop.Catalog.Application.Products.Update;
+﻿namespace CoolShop.Catalog.Application.Products.Update;
 
 public sealed class UpdateProductValidator : AbstractValidator<UpdateProductCommand>
 {

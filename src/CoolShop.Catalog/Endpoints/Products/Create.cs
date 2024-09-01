@@ -1,9 +1,6 @@
 ﻿using CoolShop.Catalog.Application.Products.Create;
 using CoolShop.Catalog.Domain.ProductAggregator;
 using CoolShop.Catalog.Filters;
-using CoolShop.Shared.Endpoints;
-using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoolShop.Catalog.Endpoints.Products;

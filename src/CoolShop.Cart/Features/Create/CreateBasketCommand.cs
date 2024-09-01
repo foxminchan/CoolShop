@@ -8,19 +8,19 @@ using Dapr.Client;
 
 namespace CoolShop.Cart.Features.Create;
 
-public sealed record CreateBasketCommand(Guid ProductId, int Quantity) : ICommand<Result<string>>;
+public sealed record CreateBasketCommand(Guid ProductId, Guid CouponId, int Quantity) : ICommand<Result<string>>;
 
 public sealed class CreateBasketHandler(
     DaprClient daprClient,
     IIdentityService identityService) : ICommandHandler<CreateBasketCommand, Result<string>>
 {
-    public async Task<Result<Guid>> Handle(CreateBasketCommand request, CancellationToken cancellationToken)
+    public async Task<Result<string>> Handle(CreateBasketCommand request, CancellationToken cancellationToken)
     {
         var customerId = identityService.GetUserIdentity();
 
         Guard.Against.NullOrEmpty(customerId);
 
-        Basket basket = new(customerId, [new(request.ProductId, request.Quantity)]);
+        Basket basket = new(customerId, request.CouponId, [new(request.ProductId, request.Quantity)]);
 
         var existingBasket = await daprClient.GetStateEntryAsync<Basket>(
             ServiceName.Dapr.StateStore,

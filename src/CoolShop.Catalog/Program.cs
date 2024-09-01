@@ -1,8 +1,6 @@
 ﻿using CoolShop.Catalog.Extensions;
-using CoolShop.ServiceDefaults;
-using CoolShop.Shared.Endpoints;
+using CoolShop.Catalog.Grpc;
 using Microsoft.Extensions.FileProviders;
-using GrpcProductServer = CoolShop.Catalog.Grpc.ProductService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +29,6 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/Pics"
 });
 
-app.MapGrpcService<GrpcProductServer>();
+app.MapGrpcService<ProductService>();
 
 app.Run();

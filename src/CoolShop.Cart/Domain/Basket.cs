@@ -1,8 +1,9 @@
 ﻿namespace CoolShop.Cart.Domain;
 
-public sealed class Basket(string accountId, List<BasketItem> basketItems)
+public sealed class Basket(string accountId, Guid? couponId, List<BasketItem> basketItems)
 {
     public string AccountId { get; private set; } = accountId;
+    public Guid? CouponId { get; private set; } = couponId;
     public ICollection<BasketItem> BasketItems { get; } = basketItems;
 
     public void AddItem(BasketItem item)

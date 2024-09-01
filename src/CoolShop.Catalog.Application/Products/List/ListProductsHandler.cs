@@ -1,7 +1,5 @@
-﻿using Ardalis.Result;
-using CoolShop.Catalog.Domain.ProductAggregator;
+﻿using CoolShop.Catalog.Domain.ProductAggregator;
 using CoolShop.Catalog.Domain.ProductAggregator.Specifications;
-using CoolShop.Core.SharedKernel;
 
 namespace CoolShop.Catalog.Application.Products.List;
 

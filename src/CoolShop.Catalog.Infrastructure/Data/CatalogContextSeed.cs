@@ -1,6 +1,4 @@
-﻿using CoolShop.Catalog.Domain;
-
-namespace CoolShop.Catalog.Infrastructure.Data;
+﻿namespace CoolShop.Catalog.Infrastructure.Data;
 
 public sealed class CatalogContextSeed : IDbSeeder<CatalogContext>
 {

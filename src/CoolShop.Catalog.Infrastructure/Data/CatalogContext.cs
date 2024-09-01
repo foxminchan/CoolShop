@@ -1,6 +1,4 @@
-﻿using CoolShop.Catalog.Domain;
-using CoolShop.Catalog.Domain.ProductAggregator;
-using CoolShop.Constants;
+﻿using CoolShop.Catalog.Domain.ProductAggregator;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoolShop.Catalog.Infrastructure.Data;

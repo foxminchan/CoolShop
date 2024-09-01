@@ -1,8 +1,5 @@
 ﻿using CoolShop.Catalog.Application.Products.RemoveImage;
 using CoolShop.Catalog.Domain.ProductAggregator;
-using CoolShop.Shared.Endpoints;
-using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace CoolShop.Catalog.Endpoints.Products;
 

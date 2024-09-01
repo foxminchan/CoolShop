@@ -1,8 +1,4 @@
 ﻿using CoolShop.Catalog.Application.Categories.Delete;
-using CoolShop.Catalog.Domain;
-using CoolShop.Shared.Endpoints;
-using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace CoolShop.Catalog.Endpoints.Categories;
 

@@ -1,6 +1,4 @@
-﻿using Ardalis.Specification;
-
-namespace CoolShop.Catalog.Domain.ProductAggregator.Specifications;
+﻿namespace CoolShop.Catalog.Domain.ProductAggregator.Specifications;
 
 public sealed class ProductFilterSpec : Specification<Product>
 {

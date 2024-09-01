@@ -21,6 +21,7 @@ public static class ServiceName
     {
         public const string Catalog = "catalog-api";
         public const string Inventory = "inventory-api";
+        public const string Cart = "cart-api";
         public const string Ordering = "ordering-api";
         public const string Promotion = "promotion-api";
         public const string Rating = "rating-api";

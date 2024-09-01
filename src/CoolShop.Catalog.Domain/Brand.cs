@@ -1,7 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using CoolShop.Core.SeedWork;
-
-namespace CoolShop.Catalog.Domain;
+﻿namespace CoolShop.Catalog.Domain;
 
 public sealed class Brand : EntityBase, IAggregateRoot, ISoftDelete
 {

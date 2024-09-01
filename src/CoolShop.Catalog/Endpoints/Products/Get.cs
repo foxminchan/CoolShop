@@ -1,9 +1,6 @@
 ﻿using CoolShop.Catalog.Application.Products;
 using CoolShop.Catalog.Application.Products.Get;
 using CoolShop.Catalog.Domain.ProductAggregator;
-using CoolShop.Shared.Endpoints;
-using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace CoolShop.Catalog.Endpoints.Products;
 

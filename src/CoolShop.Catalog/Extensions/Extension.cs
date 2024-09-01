@@ -1,13 +1,4 @@
-﻿using CoolShop.Catalog.Application;
-using CoolShop.Catalog.Infrastructure;
-using CoolShop.ServiceDefaults;
-using CoolShop.Shared.Converters;
-using CoolShop.Shared.Endpoints;
-using CoolShop.Shared.Exceptions;
-using CoolShop.Shared.Versioning;
-using Microsoft.AspNetCore.Http.Json;
-
-namespace CoolShop.Catalog.Extensions;
+﻿namespace CoolShop.Catalog.Extensions;
 
 internal static class Extension
 {

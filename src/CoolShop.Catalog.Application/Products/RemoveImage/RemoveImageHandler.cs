@@ -1,8 +1,6 @@
 ﻿using Ardalis.GuardClauses;
-using Ardalis.Result;
 using CoolShop.Catalog.Domain.ProductAggregator;
 using CoolShop.Catalog.Infrastructure.Storage;
-using CoolShop.Core.SharedKernel;
 
 namespace CoolShop.Catalog.Application.Products.RemoveImage;
 

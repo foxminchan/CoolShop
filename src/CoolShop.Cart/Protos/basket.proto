@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "CoolShop.Cart.Grpc";
+
+package BasketApi;
+
+service Basket {
+    rpc GetBasket (BasketRequest) returns (BasketResponse);
+}
+
+message BasketRequest {
+    string id = 1;
+}
+
+message BasketResponse {
+    string id = 1;
+    repeated Product Products = 2;
+    double totalPrice = 3;
+    string couponId = 4;
+}
+
+message Product {
+    string id = 1;
+    string name = 2;
+    int32  quantity = 3;
+    double price = 4;
+    double discount = 5;
+}

@@ -39,6 +39,7 @@ internal static class Extension
         builder.AddVersioning();
         builder.AddEndpoints(typeof(global::Program));
 
+        builder.Services.AddGrpc();
         builder.Services.AddDaprClient();
         builder.Services.AddHttpContextAccessor();
 

@@ -1,6 +1,4 @@
 ﻿using CoolShop.Catalog.Domain.ProductAggregator;
-using CoolShop.Constants;
-using FluentValidation;
 
 namespace CoolShop.Catalog.Application.Products.Create;
 

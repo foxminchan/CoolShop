@@ -1,7 +1,5 @@
 ﻿using Ardalis.GuardClauses;
-using Ardalis.Result;
 using CoolShop.Catalog.Domain.ProductAggregator;
-using CoolShop.Core.SharedKernel;
 
 namespace CoolShop.Catalog.Application.Products.Delete;
 
