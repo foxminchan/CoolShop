@@ -1,12 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using Ardalis.Result;
-using CoolShop.Cart.Domain;
-using CoolShop.Constants;
-using CoolShop.Core.SharedKernel;
-using CoolShop.Shared.Identity;
-using Dapr.Client;
-
-namespace CoolShop.Cart.Features.RemoveItem;
+﻿namespace CoolShop.Cart.Features.RemoveItem;
 
 public sealed record RemoveItemCommand(Guid ProductId) : ICommand<Result>;
 

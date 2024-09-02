@@ -1,7 +1,5 @@
 ﻿using CoolShop.Cart.Extensions;
 using CoolShop.Cart.Grpc;
-using CoolShop.ServiceDefaults;
-using CoolShop.Shared.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 

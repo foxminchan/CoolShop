@@ -3,6 +3,7 @@
 public static class DataSchemaLength
 {
     public const int Micro = 5;
+    public const int Tiny = 10;
     public const int Small = 20;
     public const int Medium = 50;
     public const int Large = 100;

@@ -1,18 +1,20 @@
-﻿using System.Collections.Immutable;
-using Aspire.Hosting.Dapr;
+﻿using Aspire.Hosting.Dapr;
 using CoolShop.Constants;
 using CoolShop.HealthCheck.Hosting;
+using CoolShop.Krakend.Hosting;
 using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
 builder.AddDapr(options => options.EnableTelemetry = true);
 
+// Parameters
 var adminUsername = builder.AddParameter("keycloak-username", true);
 var adminPassword = builder.AddParameter("keycloak-password", true);
 var postgresUser = builder.AddParameter("postgres-user", true);
 var postgresPassword = builder.AddParameter("postgres-password", true);
 
+// Components
 var postgres = builder
     .AddPostgres("postgres", postgresUser, postgresPassword, 5432)
     .WithPgAdmin()
@@ -29,52 +31,80 @@ var orderingDb = postgres.AddDatabase(ServiceName.Database.Ordering);
 var promotionDb = postgres.AddDatabase(ServiceName.Database.Promotion);
 var ratingDb = mongodb.AddDatabase(ServiceName.Database.Rating);
 
+var keycloak = builder
+    .AddKeycloak(ServiceName.Keycloak, 8000, adminUsername, adminPassword)
+    .WithDataBindMount("../../mnt/keycloak");
+
+var pubsub = builder.AddDaprPubSub(ServiceName.Dapr.PubSub,
+    new() { LocalPath = Path.Combine(Directory.GetCurrentDirectory(), "../../dapr/components/pubsub.yaml") });
+
+var statestore = builder.AddDaprStateStore(ServiceName.Dapr.StateStore,
+    new() { LocalPath = Path.Combine(Directory.GetCurrentDirectory(), "../../dapr/components/statestore.yaml") });
+
+var lockstore = builder.AddDaprComponent(ServiceName.Dapr.LockStore, "lock.redis",
+    new() { LocalPath = Path.Combine(Directory.GetCurrentDirectory(), "../../dapr/components/lockstore.yaml") });
+
 var daprOptions = new DaprSidecarOptions
 {
+    LogLevel = "debug",
     Config = Path.Combine(Directory.GetCurrentDirectory(), "../../dapr/configuration/config.yaml"),
-    ResourcesPaths = ImmutableHashSet.Create(Directory.GetCurrentDirectory() + "../../../dapr/components")
 };
 
-var keycloak = builder
-    .AddKeycloak("keycloak", 8000, adminUsername, adminPassword)
-    .WithDataBindMount("../../mnt/keycloak");
+// Services
+builder.AddKrakend("gateway", port: 61373)
+    .WithExternalHttpEndpoints()
+    .WithConfigBindMount("../../krakend")
+    .WithEnvironment("FC_ENABLE", "1");
 
 var catalogApi = builder
     .AddProject<CoolShop_Catalog>(ServiceName.AppId.Catalog)
     .WithDaprSidecar(daprOptions)
+    .WithReference(pubsub)
+    .WithReference(statestore)
     .WithReference(catalogDb)
     .WithReference(keycloak);
 
 var inventoryApi = builder
     .AddProject<CoolShop_Inventory>(ServiceName.AppId.Inventory)
     .WithReference(inventoryDb)
+    .WithReference(statestore)
     .WithDaprSidecar(daprOptions);
 
 var cartApi = builder
     .AddProject<CoolShop_Cart>(ServiceName.AppId.Cart)
     .WithDaprSidecar(daprOptions)
+    .WithReference(pubsub)
+    .WithReference(statestore)
     .WithReference(keycloak);
 
 var orderingApi = builder
     .AddProject<CoolShop_Ordering>(ServiceName.AppId.Ordering)
     .WithDaprSidecar(daprOptions)
+    .WithReference(pubsub)
+    .WithReference(lockstore)
+    .WithReference(statestore)
     .WithReference(orderingDb)
     .WithReference(keycloak);
 
 var ratingApi = builder
     .AddProject<CoolShop_Rating>(ServiceName.AppId.Rating)
     .WithDaprSidecar(daprOptions)
+    .WithReference(pubsub)
+    .WithReference(statestore)
     .WithReference(ratingDb)
     .WithReference(keycloak);
 
 var promotionApi = builder
     .AddNpmApp(ServiceName.AppId.Promotion, "../CoolShop.Promotion")
     .WithDaprSidecar(daprOptions)
+    .WithReference(pubsub)
+    .WithReference(statestore)
     .WithReference(promotionDb)
     .WithHttpEndpoint(env: "PORT")
     .WithExternalHttpEndpoints()
     .PublishAsDockerFile();
 
+// Dashboard
 builder.AddHealthChecksUi("healthchecksui")
     .WithReference(catalogApi)
     .WithReference(inventoryApi)

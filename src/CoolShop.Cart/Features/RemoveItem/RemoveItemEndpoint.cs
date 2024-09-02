@@ -1,9 +1,4 @@
-﻿using CoolShop.Cart.Domain;
-using CoolShop.Shared.Endpoints;
-using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace CoolShop.Cart.Features.RemoveItem;
+﻿namespace CoolShop.Cart.Features.RemoveItem;
 
 public sealed class RemoveItemEndpoint : IEndpoint<NoContent, Guid, ISender>
 {

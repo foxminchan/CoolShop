@@ -1,9 +1,4 @@
-﻿using CoolShop.Cart.Domain;
-using CoolShop.Shared.Endpoints;
-using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace CoolShop.Cart.Features.ReduceItemQuantity;
+﻿namespace CoolShop.Cart.Features.ReduceItemQuantity;
 
 public sealed record ReduceItemQuantityRequest(Guid ProductId, int Quantity);
 

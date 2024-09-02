@@ -1,12 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using Ardalis.Result;
-using CoolShop.Cart.Domain;
-using CoolShop.Constants;
-using CoolShop.Core.SharedKernel;
-using CoolShop.Shared.Identity;
-using Dapr.Client;
-
-namespace CoolShop.Cart.Features.ReduceItemQuantity;
+﻿namespace CoolShop.Cart.Features.ReduceItemQuantity;
 
 public sealed record ReduceItemQuantityCommand(Guid ProductId, int Quantity) : ICommand<Result>;
 

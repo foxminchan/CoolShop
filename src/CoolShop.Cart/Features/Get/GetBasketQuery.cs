@@ -1,11 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using Ardalis.Result;
-using CoolShop.Cart.Domain;
-using CoolShop.Catalog.Grpc;
-using CoolShop.Constants;
-using CoolShop.Core.SharedKernel;
-using CoolShop.Shared.Identity;
-using Dapr.Client;
+﻿using CoolShop.Catalog.Grpc;
 
 namespace CoolShop.Cart.Features.Get;
 

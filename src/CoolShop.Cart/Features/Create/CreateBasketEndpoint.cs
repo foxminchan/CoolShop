@@ -1,9 +1,4 @@
-﻿using CoolShop.Cart.Domain;
-using CoolShop.Shared.Endpoints;
-using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace CoolShop.Cart.Features.Create;
+﻿namespace CoolShop.Cart.Features.Create;
 
 public sealed record CreateBasketRequest(Guid ProductId, Guid CouponId, int Quantity);
 

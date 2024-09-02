@@ -1,11 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using Ardalis.Result;
-using CoolShop.Constants;
-using CoolShop.Core.SharedKernel;
-using CoolShop.Shared.Identity;
-using Dapr.Client;
-
-namespace CoolShop.Cart.Features.Delete;
+﻿namespace CoolShop.Cart.Features.Delete;
 
 public sealed class DeleteBasketCommand : ICommand<Result>;
 

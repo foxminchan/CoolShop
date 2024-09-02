@@ -1,18 +1,9 @@
-﻿using Ardalis.GuardClauses;
-using Ardalis.Result;
-using CoolShop.Cart.Domain;
-using CoolShop.Constants;
-using CoolShop.Core.SharedKernel;
-using CoolShop.Shared.Identity;
-using Dapr.Client;
-
-namespace CoolShop.Cart.Features.Create;
+﻿namespace CoolShop.Cart.Features.Create;
 
 public sealed record CreateBasketCommand(Guid ProductId, Guid CouponId, int Quantity) : ICommand<Result<string>>;
 
-public sealed class CreateBasketHandler(
-    DaprClient daprClient,
-    IIdentityService identityService) : ICommandHandler<CreateBasketCommand, Result<string>>
+public sealed class CreateBasketHandler(DaprClient daprClient, IIdentityService identityService)
+    : ICommandHandler<CreateBasketCommand, Result<string>>
 {
     public async Task<Result<string>> Handle(CreateBasketCommand request, CancellationToken cancellationToken)
     {

@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using CoolShop.Catalog.Grpc;
-using CoolShop.Constants;
 using Dapr.AppCallback.Autogen.Grpc.v1;
-using Dapr.Client;
 using Dapr.Client.Autogen.Grpc.v1;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;

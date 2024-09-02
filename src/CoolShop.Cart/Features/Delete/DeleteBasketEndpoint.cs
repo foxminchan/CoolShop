@@ -1,9 +1,4 @@
-﻿using CoolShop.Cart.Domain;
-using CoolShop.Shared.Endpoints;
-using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace CoolShop.Cart.Features.Delete;
+﻿namespace CoolShop.Cart.Features.Delete;
 
 public sealed class DeleteBasketEndpoint : IEndpoint<NoContent, ISender>
 {

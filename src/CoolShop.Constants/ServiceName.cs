@@ -2,10 +2,13 @@
 
 public static class ServiceName
 {
+    public const string Keycloak = "keycloak";
+
     public static class Dapr
     {
         public const string StateStore = "statestore";
         public const string PubSub = "pubsub";
+        public const string LockStore = "lockstore";
     }
 
     public static class Database

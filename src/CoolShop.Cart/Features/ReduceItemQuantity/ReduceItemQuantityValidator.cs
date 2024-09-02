@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace CoolShop.Cart.Features.ReduceItemQuantity;
+﻿namespace CoolShop.Cart.Features.ReduceItemQuantity;
 
 internal sealed class ReduceItemQuantityValidator : AbstractValidator<ReduceItemQuantityCommand>
 {

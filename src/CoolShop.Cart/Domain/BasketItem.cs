@@ -1,6 +1,4 @@
-﻿using Ardalis.GuardClauses;
-
-namespace CoolShop.Cart.Domain;
+﻿namespace CoolShop.Cart.Domain;
 
 public sealed class BasketItem(Guid id, int quantity)
 {

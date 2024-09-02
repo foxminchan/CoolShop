@@ -1,7 +1,4 @@
 ﻿using CoolShop.Catalog.Grpc;
-using CoolShop.Constants;
-using Dapr.Client;
-using FluentValidation;
 
 namespace CoolShop.Cart.Features.Create;
 

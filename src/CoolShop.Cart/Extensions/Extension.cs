@@ -1,14 +1,4 @@
-﻿using CoolShop.ServiceDefaults;
-using CoolShop.Shared.ActivityScope;
-using CoolShop.Shared.Endpoints;
-using CoolShop.Shared.Exceptions;
-using CoolShop.Shared.Identity;
-using CoolShop.Shared.Metrics;
-using CoolShop.Shared.Pipelines;
-using CoolShop.Shared.Versioning;
-using FluentValidation;
-
-namespace CoolShop.Cart.Extensions;
+﻿namespace CoolShop.Cart.Extensions;
 
 internal static class Extension
 {

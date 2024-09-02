@@ -1,9 +1,4 @@
-﻿using CoolShop.Cart.Domain;
-using CoolShop.Shared.Endpoints;
-using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace CoolShop.Cart.Features.Get;
+﻿namespace CoolShop.Cart.Features.Get;
 
 public sealed class GetBasketEndpoint : IEndpoint<Ok<BasketDto>, ISender>
 {
