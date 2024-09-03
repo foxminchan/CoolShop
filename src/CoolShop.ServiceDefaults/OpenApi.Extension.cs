@@ -42,25 +42,37 @@ public static class OpenApiExtension
             ];
         }));
 
-        if (!app.Environment.IsDevelopment())
-        {
-            return app;
-        }
-
-        app.UseSwaggerUI(options =>
+        app.UseReDoc(options =>
         {
             app.DescribeApiVersions()
-                .Select(desc => new
-                {
-                    url = $"/swagger/{desc.GroupName}/swagger.json", name = desc.GroupName.ToUpperInvariant()
-                })
+                .Select(desc => $"/swagger/{desc.GroupName}/swagger.json")
                 .ToList()
-                .ForEach(endpoint => options.SwaggerEndpoint(endpoint.url, endpoint.name));
+                .ForEach(spec => options.SpecUrl(spec));
 
-            options.EnableValidator();
+            options.EnableUntrustedSpec();
         });
 
-        app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwaggerUI(options =>
+            {
+                app.DescribeApiVersions()
+                    .Select(desc => new
+                    {
+                        url = $"/swagger/{desc.GroupName}/swagger.json", name = desc.GroupName.ToUpperInvariant()
+                    })
+                    .ToList()
+                    .ForEach(endpoint => options.SwaggerEndpoint(endpoint.url, endpoint.name));
+
+                options.EnableValidator();
+            });
+
+            app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
+        }
+        else
+        {
+            app.MapGet("/", () => Results.Redirect("/api-docs")).ExcludeFromDescription();
+        }
 
         return app;
     }

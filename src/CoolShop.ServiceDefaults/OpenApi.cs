@@ -3,7 +3,6 @@
 public sealed class OpenApi
 {
     public Document Document { get; set; } = new();
-    //public Auth Auth { get; set; } = new();
 }
 
 public sealed class Document

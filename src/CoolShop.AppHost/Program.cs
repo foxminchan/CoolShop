@@ -1,10 +1,4 @@
-﻿using Aspire.Hosting.Dapr;
-using CoolShop.Constants;
-using CoolShop.HealthCheck.Hosting;
-using CoolShop.Krakend.Hosting;
-using Projects;
-
-var builder = DistributedApplication.CreateBuilder(args);
+﻿var builder = DistributedApplication.CreateBuilder(args);
 
 builder.AddDapr(options => options.EnableTelemetry = true);
 
@@ -44,14 +38,19 @@ var statestore = builder.AddDaprStateStore(ServiceName.Dapr.StateStore,
 var lockstore = builder.AddDaprComponent(ServiceName.Dapr.LockStore, "lock.redis",
     new() { LocalPath = Path.Combine(Directory.GetCurrentDirectory(), "../../dapr/components/lockstore.yaml") });
 
+var email = builder.AddDaprComponent(ServiceName.Dapr.Smtp, "bindings.smtp",
+    new() { LocalPath = Path.Combine(Directory.GetCurrentDirectory(), "../../dapr/components/email.yaml") });
+
 var daprOptions = new DaprSidecarOptions
 {
     LogLevel = "debug",
     Config = Path.Combine(Directory.GetCurrentDirectory(), "../../dapr/configuration/config.yaml"),
 };
 
+builder.AddMailDev("email", 1025);
+
 // Services
-builder.AddKrakend("gateway", port: 61373)
+builder.AddKrakend("gateway")
     .WithExternalHttpEndpoints()
     .WithConfigBindMount("../../krakend")
     .WithEnvironment("FC_ENABLE", "1");
@@ -94,6 +93,13 @@ var ratingApi = builder
     .WithReference(ratingDb)
     .WithReference(keycloak);
 
+var notificationApi = builder
+    .AddProject<CoolShop_Notification>(ServiceName.AppId.Notification)
+    .WithDaprSidecar(daprOptions)
+    .WithReference(email)
+    .WithReference(pubsub)
+    .WithReference(statestore);
+
 var promotionApi = builder
     .AddNpmApp(ServiceName.AppId.Promotion, "../CoolShop.Promotion")
     .WithDaprSidecar(daprOptions)
@@ -112,6 +118,7 @@ builder.AddHealthChecksUi("healthchecksui")
     .WithReference(orderingApi)
     .WithReference(promotionApi)
     .WithReference(ratingApi)
+    .WithReference(notificationApi)
     .WithExternalHttpEndpoints();
 
 builder.AddExecutable("dapr-dashboard", "dapr", ".", "dashboard")

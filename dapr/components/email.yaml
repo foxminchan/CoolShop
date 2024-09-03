@@ -1,0 +1,21 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: smtp
+  namespace: coolshop
+spec:
+  type: bindings.smtp
+  version: v1
+  metadata:
+    - name: host
+      value: maildev
+    - name: port
+      value: 1025
+    - name: user
+      value: ""
+    - name: password
+      value: ""
+    - name: skipTLSVerify
+      value: true
+scopes:
+  - ordering-api

@@ -18,6 +18,6 @@ public sealed class GetSupplierEndpoint : IEndpoint<Ok<SupplierDto>, Guid, ISend
     {
         var result = await sender.Send(new GetSupplierQuery(id), cancellationToken);
 
-        return TypedResults.Ok(result.Value);
+        return TypedResults.Ok(result.Value?.ToDto());
     }
 }

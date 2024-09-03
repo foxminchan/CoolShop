@@ -18,6 +18,6 @@ public sealed class GetWarehouseEndpoint : IEndpoint<Ok<WarehouseDto>, Guid, ISe
     {
         var result = await sender.Send(new GetWarehouseQuery(id), cancellationToken);
 
-        return TypedResults.Ok(result.Value);
+        return TypedResults.Ok(result.Value?.ToDto());
     }
 }

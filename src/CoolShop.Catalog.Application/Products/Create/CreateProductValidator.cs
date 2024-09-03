@@ -1,10 +1,12 @@
 ﻿using CoolShop.Catalog.Domain.ProductAggregator;
+using CoolShop.Inventory.Grpc;
+using Dapr.Client;
 
 namespace CoolShop.Catalog.Application.Products.Create;
 
-internal sealed class CreateProductValidator : AbstractValidator<CreateProductCommand>
+public sealed class CreateProductValidator : AbstractValidator<CreateProductCommand>
 {
-    public CreateProductValidator()
+    public CreateProductValidator(InventoryValidator inventoryValidator)
     {
         RuleFor(x => x.Name)
             .NotEmpty()
@@ -29,5 +31,34 @@ internal sealed class CreateProductValidator : AbstractValidator<CreateProductCo
 
         RuleFor(x => x.BrandId)
             .NotEmpty();
+
+        RuleFor(x => x.InventoryId)
+            .SetValidator(inventoryValidator);
+    }
+}
+
+public sealed class InventoryValidator : AbstractValidator<Guid>
+{
+    private readonly DaprClient _daprClient;
+
+    public InventoryValidator(DaprClient daprClient)
+    {
+        _daprClient = daprClient;
+
+        RuleFor(x => x)
+            .NotEmpty()
+            .MustAsync(Exist)
+            .WithMessage("Inventory does not exist");
+    }
+
+    private async Task<bool> Exist(Guid inventoryId, CancellationToken cancellationToken)
+    {
+        var inventory = await _daprClient.InvokeMethodAsync<InventoryRequest, InventoryResponse>(
+            ServiceName.AppId.Inventory,
+            nameof(Inventory.Grpc.Inventory.InventoryClient.GetInventory),
+            new() { InventoryId = inventoryId.ToString() },
+            cancellationToken);
+
+        return inventory is not null;
     }
 }

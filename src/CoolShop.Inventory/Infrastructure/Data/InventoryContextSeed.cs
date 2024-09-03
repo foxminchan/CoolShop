@@ -28,7 +28,8 @@ public sealed class InventoryContextSeed : IDbSeeder<InventoryContext>
             {
                 foreach (var warehouse in warehouses)
                 {
-                    await context.Inventories.AddAsync(new(new Random().Next(200, 500), new Random().Next(50, 100), supplier.Id, warehouse.Id));
+                    await context.Inventories.AddAsync(new(new Random().Next(200, 500), new Random().Next(50, 100),
+                        supplier.Id, warehouse.Id));
                 }
             }
 

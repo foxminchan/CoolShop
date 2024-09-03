@@ -15,5 +15,5 @@ message InventoryRequest {
 message InventoryResponse {
     string InventoryId = 1;
     int32 QuantityAvailable = 2;
-    int32 QuantityReserved = 3;
+    int32 QuantityOnHold = 3;
 }

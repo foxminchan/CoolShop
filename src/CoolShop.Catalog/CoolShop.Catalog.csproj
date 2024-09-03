@@ -1,15 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
-    <PackageReference Include="Dapr.AspNetCore" />
     <PackageReference Include="Grpc.AspNetCore" />
-    <PackageReference Include="Grpc.AspNetCore.Server.ClientFactory" />
-    <PackageReference Include="Grpc.Tools" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <Protobuf Include="Protos\product.proto" GrpcServices="Server" />
-    <Protobuf Include="..\CoolShop.Inventory\Protos\inventory.proto" Link="Protos\inventory.proto" GrpcServices="Client" />
   </ItemGroup>
 
   <ItemGroup>

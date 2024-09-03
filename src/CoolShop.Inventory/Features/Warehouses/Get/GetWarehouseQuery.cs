@@ -2,15 +2,15 @@
 
 namespace CoolShop.Inventory.Features.Warehouses.Get;
 
-public sealed record GetWarehouseQuery(Guid Id) : IQuery<Result<WarehouseDto?>>;
+public sealed record GetWarehouseQuery(Guid Id) : IQuery<Result<Warehouse?>>;
 
 public sealed class GetWarehouseHandler(IReadRepository<Warehouse> repository)
-    : IQueryHandler<GetWarehouseQuery, Result<WarehouseDto?>>
+    : IQueryHandler<GetWarehouseQuery, Result<Warehouse?>>
 {
-    public async Task<Result<WarehouseDto?>> Handle(GetWarehouseQuery query, CancellationToken cancellationToken)
+    public async Task<Result<Warehouse?>> Handle(GetWarehouseQuery query, CancellationToken cancellationToken)
     {
         var warehouse = await repository.GetByIdAsync(query.Id, cancellationToken);
 
-        return warehouse?.ToDto();
+        return warehouse;
     }
 }

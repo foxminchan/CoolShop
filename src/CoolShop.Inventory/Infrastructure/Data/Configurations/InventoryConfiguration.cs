@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CoolShop.Inventory.Infrastructure.Data.Configurations;
 
-internal sealed class InventoryConfiguration : BaseConfiguration<Domain.Inventory>
+internal sealed class InventoryConfiguration : BaseConfiguration<Domain.InventoryAggregator.Inventory>
 {
-    public override void Configure(EntityTypeBuilder<Domain.Inventory> builder)
+    public override void Configure(EntityTypeBuilder<Domain.InventoryAggregator.Inventory> builder)
     {
         base.Configure(builder);
 
