@@ -1,5 +1,4 @@
-﻿using CoolShop.Core.SharedKernel;
-using EntityFramework.Exceptions.PostgreSQL;
+﻿using EntityFramework.Exceptions.PostgreSQL;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoolShop.Ordering.Infrastructure.Data;

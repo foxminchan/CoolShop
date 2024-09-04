@@ -1,6 +1,4 @@
-﻿using CoolShop.Ordering.Infrastructure.Data;
-
-namespace CoolShop.Ordering.Extensions;
+﻿namespace CoolShop.Ordering.Extensions;
 
 internal static class Extension
 {
@@ -39,7 +37,19 @@ internal static class Extension
         builder.AddEndpoints(typeof(global::Program));
 
         builder.Services.AddGrpc();
-        builder.Services.AddDaprClient();
         builder.Services.AddHttpContextAccessor();
+
+        builder.Services.AddTransient<IIdentityService, IdentityService>();
+
+        builder.Services.AddDaprClient();
+        builder.Services.AddDaprWorkflowClient();
+        builder.Services.AddDaprWorkflow(options =>
+        {
+            options.RegisterWorkflow<CreateOrderWorkflow>();
+            options.RegisterActivity<NotifyActivity>();
+            options.RegisterActivity<AddOrderActivity>();
+            options.RegisterActivity<CancelOrderActivity>();
+            options.RegisterActivity<RetrieveBasketActivity>();
+        });
     }
 }

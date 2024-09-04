@@ -1,5 +1,4 @@
 ﻿using Ardalis.Specification.EntityFrameworkCore;
-using CoolShop.Core.SharedKernel;
 
 namespace CoolShop.Ordering.Infrastructure.Data;
 

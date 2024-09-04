@@ -11,7 +11,7 @@ public sealed class Order : EntityBase, IAggregateRoot, ISoftDelete
         // EF Core
     }
 
-    public Order(string note, PaymentMethod paymentMethod, Guid buyerId)
+    public Order(string? note, PaymentMethod paymentMethod, Guid buyerId)
     {
         Note = note;
         Status = Status.Pending;
