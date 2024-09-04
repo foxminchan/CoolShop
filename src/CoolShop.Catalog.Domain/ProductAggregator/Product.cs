@@ -9,7 +9,7 @@ public sealed class Product : EntityBase, IAggregateRoot, ISoftDelete
 
     public Product(string name, string? description, string? image, decimal price,
         decimal priceSale, Status status, Guid categoryId, Guid brandId,
-        Guid inventoryId)
+        Guid? inventoryId)
     {
         Name = Guard.Against.NullOrEmpty(name);
         Description = description;

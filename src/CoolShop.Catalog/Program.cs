@@ -1,5 +1,4 @@
-﻿using CoolShop.Catalog.Extensions;
-using CoolShop.Catalog.Grpc;
+﻿using CoolShop.Catalog.Grpc;
 
 var builder = WebApplication.CreateBuilder(args);
 

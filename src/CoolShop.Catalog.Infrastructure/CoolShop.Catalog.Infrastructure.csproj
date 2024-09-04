@@ -3,12 +3,14 @@
   <ItemGroup>
     <PackageReference Include="Polly" />
     <PackageReference Include="Polly.Extensions" />
+    <PackageReference Include="Dapr.AspNetCore" />    
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Aspire.Azure.Storage.Blobs" />
     <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />
+    <PackageReference Include="AutoBogus" />
     <PackageReference Include="EFCore.NamingConventions" />
     <PackageReference Include="EntityFrameworkCore.Exceptions.PostgreSQL" />
   </ItemGroup>

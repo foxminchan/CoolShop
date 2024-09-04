@@ -28,6 +28,7 @@ internal static class Extension
         {
             options.EnableDetailedErrors = true;
         });
+
         builder.Services.AddDaprClient();
     }
 }

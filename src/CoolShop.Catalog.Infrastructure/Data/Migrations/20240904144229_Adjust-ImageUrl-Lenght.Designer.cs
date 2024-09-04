@@ -9,10 +9,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace CoolShop.Catalog.Infrastructure.Data.Configurations
+namespace CoolShop.Catalog.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(CatalogContext))]
-    [Migration("20240904092032_Adjust-ImageUrl-Lenght")]
+    [Migration("20240904144229_Adjust-ImageUrl-Lenght")]
     partial class AdjustImageUrlLenght
     {
         /// <inheritdoc />
@@ -37,7 +37,7 @@ namespace CoolShop.Catalog.Infrastructure.Data.Configurations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 9, 20, 31, 561, DateTimeKind.Utc).AddTicks(7723))
+                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 42, 28, 980, DateTimeKind.Utc).AddTicks(471))
                         .HasColumnName("created_date");
 
                     b.Property<bool>("IsDeleted")
@@ -53,7 +53,7 @@ namespace CoolShop.Catalog.Infrastructure.Data.Configurations
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 9, 20, 31, 561, DateTimeKind.Utc).AddTicks(7981))
+                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 42, 28, 980, DateTimeKind.Utc).AddTicks(695))
                         .HasColumnName("update_date");
 
                     b.Property<Guid>("Version")
@@ -82,7 +82,7 @@ namespace CoolShop.Catalog.Infrastructure.Data.Configurations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 9, 20, 31, 562, DateTimeKind.Utc).AddTicks(156))
+                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 42, 28, 980, DateTimeKind.Utc).AddTicks(2497))
                         .HasColumnName("created_date");
 
                     b.Property<bool>("IsDeleted")
@@ -98,7 +98,7 @@ namespace CoolShop.Catalog.Infrastructure.Data.Configurations
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 9, 20, 31, 562, DateTimeKind.Utc).AddTicks(375))
+                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 42, 28, 980, DateTimeKind.Utc).AddTicks(2638))
                         .HasColumnName("update_date");
 
                     b.Property<Guid>("Version")
@@ -135,7 +135,7 @@ namespace CoolShop.Catalog.Infrastructure.Data.Configurations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 9, 20, 31, 562, DateTimeKind.Utc).AddTicks(2154))
+                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 42, 28, 980, DateTimeKind.Utc).AddTicks(4162))
                         .HasColumnName("created_date");
 
                     b.Property<string>("Description")
@@ -177,7 +177,7 @@ namespace CoolShop.Catalog.Infrastructure.Data.Configurations
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 9, 20, 31, 562, DateTimeKind.Utc).AddTicks(2391))
+                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 42, 28, 980, DateTimeKind.Utc).AddTicks(4385))
                         .HasColumnName("update_date");
 
                     b.Property<Guid>("Version")

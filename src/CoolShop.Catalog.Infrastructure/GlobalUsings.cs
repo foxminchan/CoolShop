@@ -1,3 +1,4 @@
+global using Ardalis.Result;
 global using CoolShop.Catalog.Domain;
 global using CoolShop.Constants;
 global using CoolShop.Core.SeedWork;

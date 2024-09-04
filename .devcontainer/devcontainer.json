@@ -1,5 +1,5 @@
 {
-  "name": ".NET Aspire dev container",
+  "name": "CoolShop dev container",
   "dockerFile": "Dockerfile",
   "features": {
     "ghcr.io/dapr/cli/dapr-cli:0": { "version": "latest" },

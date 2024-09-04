@@ -1,5 +1,6 @@
 global using CoolShop.Catalog.Application;
 global using CoolShop.Catalog.Domain;
+global using CoolShop.Catalog.Extensions;
 global using CoolShop.Catalog.Infrastructure;
 global using CoolShop.ServiceDefaults;
 global using CoolShop.Shared.Converters;
