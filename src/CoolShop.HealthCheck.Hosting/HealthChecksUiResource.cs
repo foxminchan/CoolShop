@@ -3,6 +3,10 @@ using Aspire.Hosting.Lifecycle;
 
 namespace CoolShop.HealthCheck.Hosting;
 
+/// <summary>
+/// https://github.com/dotnet/aspire-samples/blob/main/samples/HealthChecksUI/HealthChecksUI.AppHost/HealthChecksUIResource.cs
+/// </summary>
+/// <param name="name"></param>
 public sealed class HealthChecksUiResource(string name) : ContainerResource(name), IResourceWithServiceDiscovery
 {
     public IList<MonitoredProject> MonitoredProjects { get; } = [];

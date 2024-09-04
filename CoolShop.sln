@@ -63,6 +63,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notificatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolShop.Notification", "src\CoolShop.Notification\CoolShop.Notification.csproj", "{7B8DF3B4-33BA-484A-BFD1-B8EC57A9996C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolShop.Ollama.Hosting", "src\CoolShop.Ollama.Hosting\CoolShop.Ollama.Hosting.csproj", "{3B6BEC4C-83A5-425F-AA56-04F93B51928E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +139,10 @@ Global
 		{7B8DF3B4-33BA-484A-BFD1-B8EC57A9996C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B8DF3B4-33BA-484A-BFD1-B8EC57A9996C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B8DF3B4-33BA-484A-BFD1-B8EC57A9996C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B6BEC4C-83A5-425F-AA56-04F93B51928E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B6BEC4C-83A5-425F-AA56-04F93B51928E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B6BEC4C-83A5-425F-AA56-04F93B51928E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B6BEC4C-83A5-425F-AA56-04F93B51928E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,6 +171,7 @@ Global
 		{C178C382-F8B9-46F8-BCBD-4F968169D8A3} = {B25D00B2-704E-4952-A188-CFF41D0BB9EB}
 		{8EF6C4D0-3A27-42CB-9499-BFF291FD5F3C} = {DE51B862-11D3-4282-B066-559680C5CEF0}
 		{7B8DF3B4-33BA-484A-BFD1-B8EC57A9996C} = {8EF6C4D0-3A27-42CB-9499-BFF291FD5F3C}
+		{3B6BEC4C-83A5-425F-AA56-04F93B51928E} = {B25D00B2-704E-4952-A188-CFF41D0BB9EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8F2C855-EF71-49C9-8630-D9920FD7601A}

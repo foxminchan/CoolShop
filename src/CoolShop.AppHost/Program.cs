@@ -19,14 +19,30 @@ var mongodb = builder
     .WithMongoExpress()
     .WithDataBindMount("../../mnt/mongodb");
 
+var vectorDb = builder.AddQdrant(ServiceName.Database.Vector)
+    .WithDataBindMount("../../mnt/qdrant");
 var catalogDb = postgres.AddDatabase(ServiceName.Database.Catalog);
 var inventoryDb = postgres.AddDatabase(ServiceName.Database.Inventory);
 var orderingDb = postgres.AddDatabase(ServiceName.Database.Ordering);
 var promotionDb = postgres.AddDatabase(ServiceName.Database.Promotion);
 var ratingDb = mongodb.AddDatabase(ServiceName.Database.Rating);
 
+var storage = builder.AddAzureStorage("storage");
+
+if (builder.Environment.IsDevelopment())
+{
+    storage.RunAsEmulator(config => config
+        .WithImageTag("3.30.0")
+        .WithDataBindMount("../../mnt/azurite"));
+}
+
+var blobs = storage.AddBlobs(ServiceName.Blob);
+
+var completion = builder.AddOllama(ServiceName.Completion, enableGpu: true).WithDataVolume();
+
 var keycloak = builder
     .AddKeycloak(ServiceName.Keycloak, 8000, adminUsername, adminPassword)
+    .WithArgs("--features=preview")
     .WithDataBindMount("../../mnt/keycloak");
 
 var pubsub = builder.AddDaprPubSub(ServiceName.Dapr.PubSub,
@@ -59,7 +75,10 @@ var catalogApi = builder
     .AddProject<CoolShop_Catalog>(ServiceName.AppId.Catalog)
     .WithDaprSidecar(daprOptions)
     .WithReference(pubsub)
+    .WithReference(completion)
     .WithReference(statestore)
+    .WithReference(blobs)
+    .WithReference(vectorDb)
     .WithReference(catalogDb)
     .WithReference(keycloak);
 

@@ -16,11 +16,12 @@ public sealed class GetBasketHandler(DaprClient daprClient, IIdentityService ide
         var state = await daprClient.GetStateEntryAsync<Basket>(ServiceName.Dapr.StateStore, customerId,
             cancellationToken: cancellationToken);
 
-        Guard.Against.NotFound(customerId, state);
+        if (state is null)
+        {
+            return Result.NotFound();
+        }
 
-        var basket = state.Value;
-
-        return await MapToBasketDto(basket, cancellationToken);
+        return await MapToBasketDto(state.Value, cancellationToken);
     }
 
     private async Task<BasketDto> MapToBasketDto(Basket basket, CancellationToken cancellationToken)

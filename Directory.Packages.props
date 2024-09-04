@@ -8,20 +8,24 @@
     <DaprVersion>1.14.0</DaprVersion>
     <GrpcVersion>2.65.0</GrpcVersion>
     <SwashbuckleVersion>6.7.3</SwashbuckleVersion>
+    <PollyVersion>8.4.1</PollyVersion>
   </PropertyGroup>
-  <!-- Aspire packages -->
+  <!-- Aspire -->
   <ItemGroup>
     <PackageVersion Include="Aspire.Hosting.Dapr" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.Hosting.NodeJs" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Hosting.Qdrant" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.Hosting.MongoDB" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Hosting.Azure.Storage" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.Hosting.Keycloak" Version="$(AspireUnstablePackagesVersion)" />
     <PackageVersion Include="Aspire.Keycloak.Authentication" Version="$(AspireUnstablePackagesVersion)" />
     <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="$(AspireVersion)" />
+    <PackageVersion Include="Aspire.Azure.Storage.Blobs" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.MongoDB.Driver" Version="$(AspireVersion)" />
   </ItemGroup>
-  <!-- Microsoft packages -->
+  <!-- Microsoft Extensions -->
   <ItemGroup>
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.8.0" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="8.2.0" />
@@ -46,7 +50,7 @@
     <PackageVersion Include="Ardalis.Specification" Version="8.0.0" />
     <PackageVersion Include="Ardalis.Specification.EntityFrameworkCore" Version="8.0.0" />
   </ItemGroup>
-  <!-- OpenTelemetry packages -->
+  <!-- OpenTelemetry -->
   <ItemGroup>
     <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.9.0" />
     <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
@@ -59,7 +63,11 @@
   <ItemGroup>
     <PackageVersion Include="Dapr.Workflow" Version="$(DaprVersion)" />
     <PackageVersion Include="Dapr.AspNetCore" Version="$(DaprVersion)" />
-    <PackageVersion Include="Dapr.Actors.AspNetCore" Version="$(DaprVersion)" />
+  </ItemGroup>
+  <!-- Polly -->
+  <ItemGroup>
+    <PackageVersion Include="Polly" Version="$(PollyVersion)" />
+    <PackageVersion Include="Polly.Extensions" Version="$(PollyVersion)" />
   </ItemGroup>
   <!-- Grpc -->
   <ItemGroup>
@@ -67,6 +75,7 @@
     <PackageVersion Include="Grpc.AspNetCore.Server.ClientFactory" Version="$(GrpcVersion)" />
     <PackageVersion Include="Grpc.Tools" Version="$(GrpcVersion)" PrivateAssets="All" />
   </ItemGroup>
+  <!-- Swashbuckle -->
   <ItemGroup>
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="$(SwashbuckleVersion)" />
     <PackageVersion Include="Swashbuckle.AspNetCore.ReDoc" Version="$(SwashbuckleVersion)" />

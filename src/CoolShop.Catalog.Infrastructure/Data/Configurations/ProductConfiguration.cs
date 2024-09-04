@@ -23,7 +23,7 @@ internal class ProductConfiguration : BaseConfiguration<Product>
         );
 
         builder.Property(x => x.Image)
-            .HasMaxLength(DataSchemaLength.Large);
+            .HasMaxLength(DataSchemaLength.SuperLarge);
 
         builder.HasOne(x => x.Category)
             .WithMany()

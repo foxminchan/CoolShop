@@ -3,7 +3,7 @@ using CoolShop.Catalog.Infrastructure.Storage;
 
 namespace CoolShop.Catalog.Application.Products.Create;
 
-public sealed class CreateProductHandler(IRepository<Product> repository, ILocalStorage storage)
+public sealed class CreateProductHandler(IRepository<Product> repository, IAzuriteService storage)
     : ICommandHandler<CreateProductCommand, Result<Guid>>
 {
     public async Task<Result<Guid>> Handle(CreateProductCommand request, CancellationToken cancellationToken)

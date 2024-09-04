@@ -4,7 +4,7 @@ using CoolShop.Catalog.Infrastructure.Storage;
 
 namespace CoolShop.Catalog.Application.Products.RemoveImage;
 
-public sealed class RemoveImageHandler(IRepository<Product> repository, ILocalStorage storage)
+public sealed class RemoveImageHandler(IRepository<Product> repository, IAzuriteService storage)
     : ICommandHandler<RemoveImageCommand, Result>
 {
     public async Task<Result> Handle(RemoveImageCommand request, CancellationToken cancellationToken = default)
@@ -13,7 +13,7 @@ public sealed class RemoveImageHandler(IRepository<Product> repository, ILocalSt
 
         Guard.Against.NotFound(request.Id, product);
 
-        storage.RemoveFile(product.Image);
+        await storage.DeleteFileAsync(product.Image, cancellationToken);
         product.RemoveImage();
 
         await repository.SaveChangesAsync(cancellationToken);

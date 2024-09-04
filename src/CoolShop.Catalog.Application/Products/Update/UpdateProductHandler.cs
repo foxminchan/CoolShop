@@ -4,7 +4,7 @@ using CoolShop.Catalog.Infrastructure.Storage;
 
 namespace CoolShop.Catalog.Application.Products.Update;
 
-public sealed class UpdateProductHandler(IRepository<Product> repository, ILocalStorage storage)
+public sealed class UpdateProductHandler(IRepository<Product> repository, IAzuriteService storage)
     : ICommandHandler<UpdateProductCommand, Result>
 {
     public async Task<Result> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
@@ -16,7 +16,7 @@ public sealed class UpdateProductHandler(IRepository<Product> repository, ILocal
         string? newImage = null;
         if (request.Image is not null)
         {
-            newImage = await ProcessUpdateImage(product, request.Image);
+            newImage = await ProcessUpdateImage(product, request.Image, cancellationToken);
         }
 
         product.Update(
@@ -36,14 +36,14 @@ public sealed class UpdateProductHandler(IRepository<Product> repository, ILocal
     }
 
 
-    private async Task<string> ProcessUpdateImage(Product product, IFormFile image)
+    private async Task<string> ProcessUpdateImage(Product product, IFormFile image, CancellationToken cancellationToken)
     {
         if (product.Image is not null)
         {
-            storage.RemoveFile(product.Image);
+            await storage.DeleteFileAsync(product.Image, cancellationToken);
         }
 
-        var newImage = await storage.UploadFileAsync(image);
+        var newImage = await storage.UploadFileAsync(image, cancellationToken);
 
         return newImage;
     }

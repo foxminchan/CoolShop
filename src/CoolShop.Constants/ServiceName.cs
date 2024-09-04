@@ -2,7 +2,11 @@
 
 public static class ServiceName
 {
+    public const string Blob = "blob";
+
     public const string Keycloak = "keycloak";
+
+    public const string Completion = "completion";
 
     public static class Dapr
     {
@@ -14,6 +18,7 @@ public static class ServiceName
 
     public static class Database
     {
+        public const string Vector = "vector";
         public const string Catalog = "catalogdb";
         public const string Inventory = "inventorydb";
         public const string Ordering = "orderingdb";
