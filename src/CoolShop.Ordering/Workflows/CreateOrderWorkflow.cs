@@ -1,4 +1,5 @@
 ﻿using CoolShop.Cart.Grpc;
+using DurableTask.Core.Exceptions;
 
 namespace CoolShop.Ordering.Workflows;
 
@@ -13,7 +14,7 @@ public sealed class CreateOrderWorkflow : Workflow<CreateOrderWorkflowRequest, C
                 firstRetryInterval: TimeSpan.FromMinutes(1),
                 backoffCoefficient: 2.0,
                 maxRetryInterval: TimeSpan.FromHours(1),
-                maxNumberOfAttempts: 10),
+                maxNumberOfAttempts: 10)
         };
 
         var cart = await context.CallActivityAsync<BasketResponse?>(
@@ -23,7 +24,7 @@ public sealed class CreateOrderWorkflow : Workflow<CreateOrderWorkflowRequest, C
 
         Guard.Against.NotFound(input.BuyerId, cart);
 
-        List<Item> items = cart.Products
+        var items = cart.Products
             .Select(x => new Item(Guid.Parse(x.Id), x.Quantity, (decimal)x.Price))
             .ToList();
 
@@ -60,7 +61,7 @@ public sealed class CreateOrderWorkflow : Workflow<CreateOrderWorkflowRequest, C
                 return await HandleOrderCancellationAsync(context, order.OrderId, input.Email,
                     "Catalog and basket update failed due to timeout", retryOptions);
             }
-            catch (Exception ex) when (ex.InnerException is DurableTask.Core.Exceptions.TaskFailedException)
+            catch (Exception ex) when (ex.InnerException is TaskFailedException)
             {
                 return await HandleOrderCancellationAsync(context, order.OrderId, input.Email,
                     "Catalog and basket update failed due to exception", retryOptions);

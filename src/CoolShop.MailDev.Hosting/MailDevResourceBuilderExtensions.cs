@@ -1,7 +1,7 @@
 ﻿namespace CoolShop.MailDev.Hosting;
 
 /// <summary>
-/// https://github.com/davidfowl/Build2024AspireDemo/blob/main/AppHost/MailDev/MailDevResourceBuilderExtensions.cs
+///     https://github.com/davidfowl/Build2024AspireDemo/blob/main/AppHost/MailDev/MailDevResourceBuilderExtensions.cs
 /// </summary>
 public static class MailDevResourceBuilderExtensions
 {

@@ -1,7 +1,7 @@
 ﻿namespace CoolShop.Krakend.Hosting;
 
 /// <summary>
-/// https://github.com/NapalmCodes/Aspire.Hosting.Krakend/blob/main/NapalmCodes.Aspire.Hosting.Krakend/KrakendResource.cs
+///     https://github.com/NapalmCodes/Aspire.Hosting.Krakend/blob/main/NapalmCodes.Aspire.Hosting.Krakend/KrakendResource.cs
 /// </summary>
 /// <param name="name"></param>
 public sealed class KrakendResource(string name) : ContainerResource(name), IResourceWithConnectionString

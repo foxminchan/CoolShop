@@ -1,6 +1,6 @@
 ﻿using CoolShop.Ordering.Domain.BuyerAggregate;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CoolShop.Ordering.Infrastructure.Data.Configurations;
 

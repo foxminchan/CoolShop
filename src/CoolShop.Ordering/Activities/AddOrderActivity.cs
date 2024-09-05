@@ -20,9 +20,28 @@ public sealed class AddOrderActivity(IRepository<Order> repository, ILoggerFacto
             order.AddOrderItem(item.ProductId, item.Quantity, item.Price);
         }
 
-        Dictionary<Guid, int> productQuantities = input.Items.ToDictionary(x => x.ProductId, x => x.Quantity);
+        var productQuantities = input.Items.ToDictionary(x => x.ProductId, x => x.Quantity);
 
-        var result = await repository.AddAsync(order);
+        Order result;
+
+#pragma warning disable CS0618 // Distributed Lock API is in Alpha, this can be removed once it is stable
+        await using (var block = await daprClient.Lock(ServiceName.Dapr.LockStore, order.Id.ToString(),
+                         order.BuyerId.ToString(),
+                         20))
+#pragma warning restore CS0618
+        {
+            if (block.Success)
+            {
+                result = await repository.AddAsync(order);
+            }
+            else
+            {
+                _logger.LogWarning("[{Activity}] - Failed to acquire lock for order {OrderId} and user {UserId}",
+                    nameof(AddOrderActivity), order.Id, order.BuyerId);
+
+                throw new InvalidOperationException("Failed to acquire lock for order");
+            }
+        }
 
         OrderingTraceExtension.LogOrderCreated(_logger, nameof(AddOrderActivity), result.Id);
 

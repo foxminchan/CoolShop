@@ -35,6 +35,11 @@ public sealed class Product : EntityBase, IAggregateRoot, ISoftDelete
     public Guid? InventoryId { get; private set; }
     public bool IsDeleted { get; set; }
 
+    public void Delete()
+    {
+        IsDeleted = true;
+    }
+
     public void Update(string name, string? description, string? image, decimal price,
         decimal priceSale, Guid categoryId, Guid brandId, Guid inventoryId)
     {
@@ -45,11 +50,6 @@ public sealed class Product : EntityBase, IAggregateRoot, ISoftDelete
         CategoryId = Guard.Against.Default(categoryId);
         BrandId = brandId;
         InventoryId = inventoryId;
-    }
-
-    public void Delete()
-    {
-        IsDeleted = true;
     }
 
     public void RemoveImage()

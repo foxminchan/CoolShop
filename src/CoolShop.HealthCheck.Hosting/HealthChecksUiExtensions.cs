@@ -3,7 +3,7 @@
 namespace CoolShop.HealthCheck.Hosting;
 
 /// <summary>
-/// https://github.com/dotnet/aspire-samples/blob/main/samples/HealthChecksUI/HealthChecksUI.AppHost/HealthChecksUIExtensions.cs
+///     https://github.com/dotnet/aspire-samples/blob/main/samples/HealthChecksUI/HealthChecksUI.AppHost/HealthChecksUIExtensions.cs
 /// </summary>
 public static class HealthChecksUiExtensions
 {

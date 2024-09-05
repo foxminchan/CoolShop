@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using Polly.Registry;
-using System.Reflection.Metadata;
+﻿using System.Reflection.Metadata;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using Microsoft.Extensions.Configuration;
+using Polly.Registry;
 
 namespace CoolShop.Catalog.Infrastructure.Storage;
 

@@ -16,6 +16,10 @@ app.UseOpenApi();
 
 app.UseCloudEvents();
 
+app.MapSubscribeHandler();
+
+app.MapSubscribers();
+
 app.MapGrpcService<ProductService>();
 
 app.Run();

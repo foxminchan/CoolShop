@@ -40,7 +40,7 @@ internal sealed class IdempotencyFilter(DaprClient daprClient) : IEndpointFilter
         Idempotent idempotent = new() { Id = key, Name = request.GetType().Name };
 
         await daprClient.SaveStateAsync(ServiceName.Dapr.StateStore, key, idempotent,
-            metadata: new Dictionary<string, string>() { { "ttlInSeconds", "60" } });
+            metadata: new Dictionary<string, string> { { "ttlInSeconds", "60" } });
 
         return await next(context);
     }

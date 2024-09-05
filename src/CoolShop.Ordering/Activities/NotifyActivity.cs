@@ -21,6 +21,6 @@ public sealed class NotifyActivity(DaprClient daprClient, ILoggerFactory loggerF
             nameof(NotifyIntegrationEvent).ToLowerInvariant(),
             new NotifyIntegrationEvent(input.Email, input.Message));
 
-        return null;
+        return default;
     }
 }

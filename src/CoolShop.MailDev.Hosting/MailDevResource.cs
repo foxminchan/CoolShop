@@ -1,7 +1,7 @@
 ﻿namespace CoolShop.MailDev.Hosting;
 
 /// <summary>
-/// https://github.com/davidfowl/Build2024AspireDemo/blob/main/AppHost/MailDev/MailDevResource.cs
+///     https://github.com/davidfowl/Build2024AspireDemo/blob/main/AppHost/MailDev/MailDevResource.cs
 /// </summary>
 /// <param name="name"></param>
 public sealed class MailDevResource(string name) : ContainerResource(name), IResourceWithConnectionString

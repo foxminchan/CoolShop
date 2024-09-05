@@ -1,6 +1,5 @@
 ﻿using CoolShop.Catalog.Domain.ProductAggregator;
 using CoolShop.Inventory.Grpc;
-using Dapr.Client;
 
 namespace CoolShop.Catalog.Application.Products.Create;
 

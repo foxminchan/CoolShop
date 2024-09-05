@@ -1,4 +1,7 @@
-﻿namespace CoolShop.Catalog.Application;
+﻿using CoolShop.Catalog.Application.Products.Activities;
+using CoolShop.Catalog.Application.Products.Workflows;
+
+namespace CoolShop.Catalog.Application;
 
 public static class Extension
 {
@@ -19,5 +22,14 @@ public static class Extension
         builder.Services.AddSingleton<IActivityScope, ActivityScope>();
         builder.Services.AddSingleton<CommandHandlerMetrics>();
         builder.Services.AddSingleton<QueryHandlerMetrics>();
+
+        builder.Services.AddDaprWorkflowClient();
+        builder.Services.AddDaprWorkflow(options =>
+        {
+            options.RegisterWorkflow<ReduceQuantityWorkflow>();
+            options.RegisterActivity<RetrieveInventoryActivity>();
+            options.RegisterActivity<SetOutStockProductActivity>();
+            options.RegisterActivity<UpdateInventoryActivity>();
+        });
     }
 }

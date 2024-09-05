@@ -54,7 +54,7 @@ public sealed class InventoryService(ISender sender, ILogger<InventoryService> l
     [DoesNotReturn]
     private static void ThrowNotFound()
     {
-        throw new RpcException(new Status(StatusCode.NotFound, "Inventory not found"));
+        throw new RpcException(new(StatusCode.NotFound, "Inventory not found"));
     }
 
     private static InventoryResponse MapToInventoryResponse(InventoryModel inventory)

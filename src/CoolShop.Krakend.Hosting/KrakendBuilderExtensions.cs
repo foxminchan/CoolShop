@@ -1,7 +1,7 @@
 ﻿namespace CoolShop.Krakend.Hosting;
 
 /// <summary>
-/// https://github.com/NapalmCodes/Aspire.Hosting.Krakend/blob/main/NapalmCodes.Aspire.Hosting.Krakend/KrakendBuilderExtensions.cs
+///     https://github.com/NapalmCodes/Aspire.Hosting.Krakend/blob/main/NapalmCodes.Aspire.Hosting.Krakend/KrakendBuilderExtensions.cs
 /// </summary>
 public static class KrakendBuilderExtensions
 {

@@ -1,12 +1,12 @@
-﻿using Aspire.Hosting.Lifecycle;
-using Microsoft.Extensions.Logging;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Text.Json;
+using Aspire.Hosting.Lifecycle;
+using Microsoft.Extensions.Logging;
 
 namespace CoolShop.Ollama.Hosting;
 
 /// <summary>
-/// https://github.com/dotnet/eShopSupport/blob/main/src/AppHost/Ollama/OllamaResourceExtensions.cs
+///     https://github.com/dotnet/eShopSupport/blob/main/src/AppHost/Ollama/OllamaResourceExtensions.cs
 /// </summary>
 public static class OllamaResourceExtensions
 {
@@ -22,7 +22,7 @@ public static class OllamaResourceExtensions
 
         var resource = new OllamaResource(name, models, defaultModel, enableGpu);
         var ollama = builder.AddResource(resource)
-            .WithHttpEndpoint(port: port, targetPort: 11434)
+            .WithHttpEndpoint(port, 11434)
             .WithImage("ollama/ollama");
 
         if (enableGpu)
@@ -93,7 +93,7 @@ public static class OllamaResourceExtensions
 
                         var ollamaModelsAvailable = await client.GetFromJsonAsync<OllamaGetTagsResponse>(
                             $"{httpEndpoint.Url}/api/tags", new JsonSerializerOptions(JsonSerializerDefaults.Web),
-                            cancellationToken: cancellationToken);
+                            cancellationToken);
 
                         if (ollamaModelsAvailable is null)
                         {
@@ -154,9 +154,9 @@ public static class OllamaResourceExtensions
             logger.LogInformation("Finished pulling ollama mode {ModelName}", modelName);
         }
 
-        record OllamaGetTagsResponse(OllamaGetTagsResponseModel[]? Models);
+        private record OllamaGetTagsResponse(OllamaGetTagsResponseModel[]? Models);
 
-        record OllamaGetTagsResponseModel(string Name);
+        private record OllamaGetTagsResponseModel(string Name);
     }
 
     private class OllamaModelDownloaderResource(string name, OllamaResource ollamaResource) : Resource(name)

@@ -24,9 +24,9 @@ public sealed class Order : EntityBase, IAggregateRoot, ISoftDelete
     public PaymentMethod PaymentMethod { get; private set; }
     public Guid BuyerId { get; private set; }
     public Buyer? Buyer { get; private set; } = default!;
-    public bool IsDeleted { get; set; }
 
     public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
+    public bool IsDeleted { get; set; }
 
     public void Delete()
     {

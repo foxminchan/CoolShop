@@ -20,12 +20,12 @@ public sealed class Buyer : EntityBase, IAggregateRoot, ISoftDelete
 
     public string? Name { get; private set; }
     public Address? Address { get; private set; }
-    public bool IsDeleted { get; set; }
 
     public IReadOnlyCollection<Order> Orders => _orders.AsReadOnly();
+    public bool IsDeleted { get; set; }
 
     public void Delete()
     {
-       IsDeleted = true;
+        IsDeleted = true;
     }
 }

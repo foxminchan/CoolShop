@@ -3,8 +3,12 @@
   <ItemGroup>
     <PackageReference Include="Polly" />
     <PackageReference Include="Polly.Extensions" />
-    <PackageReference Include="Dapr.AspNetCore" />    
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapr.AspNetCore" />
+    <PackageReference Include="Dapr.Workflow" />
+  </ItemGroup> 
 
   <ItemGroup>
     <PackageReference Include="Aspire.Azure.Storage.Blobs" />

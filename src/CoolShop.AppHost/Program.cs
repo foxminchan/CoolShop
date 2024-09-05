@@ -60,7 +60,7 @@ var email = builder.AddDaprComponent(ServiceName.Dapr.Smtp, "bindings.smtp",
 var daprOptions = new DaprSidecarOptions
 {
     LogLevel = "debug",
-    Config = Path.Combine(Directory.GetCurrentDirectory(), "../../dapr/configuration/config.yaml"),
+    Config = Path.Combine(Directory.GetCurrentDirectory(), "../../dapr/configuration/config.yaml")
 };
 
 builder.AddMailDev("email", 1025);

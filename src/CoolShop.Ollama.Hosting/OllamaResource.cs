@@ -1,7 +1,7 @@
 ﻿namespace CoolShop.Ollama.Hosting;
 
 /// <summary>
-/// https://github.com/dotnet/eShopSupport/blob/main/src/AppHost/Ollama/OllamaResource.cs
+///     https://github.com/dotnet/eShopSupport/blob/main/src/AppHost/Ollama/OllamaResource.cs
 /// </summary>
 /// <param name="name"></param>
 /// <param name="models"></param>
