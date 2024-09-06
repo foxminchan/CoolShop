@@ -1,6 +1,6 @@
 ﻿namespace CoolShop.Ordering.Features.Orders.Create;
 
-public sealed class CreateOrderValidator : AbstractValidator<CreateOrderCommand>
+internal sealed class CreateOrderValidator : AbstractValidator<CreateOrderCommand>
 {
     public CreateOrderValidator()
     {

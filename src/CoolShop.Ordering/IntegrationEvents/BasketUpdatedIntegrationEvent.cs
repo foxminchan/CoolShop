@@ -1,3 +1,3 @@
 ﻿namespace CoolShop.Ordering.IntegrationEvents;
 
-public sealed record BasketUpdatedIntegrationEvent;
+public sealed class BasketUpdatedIntegrationEvent : IntegrationEvent;

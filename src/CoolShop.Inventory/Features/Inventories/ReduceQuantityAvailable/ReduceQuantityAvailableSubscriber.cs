@@ -1,4 +1,5 @@
 ﻿using CoolShop.Inventory.IntegrationEvents;
+using Dapr;
 
 namespace CoolShop.Inventory.Features.Inventories.ReduceQuantityAvailable;
 
@@ -6,7 +7,7 @@ public sealed class ReduceQuantityAvailableSubscriber : ISubscriber<InventoryRed
 {
     public void MapSubscriber(IEndpointRouteBuilder app)
     {
-        var topic = new Dapr.TopicOptions
+        var topic = new TopicOptions
         {
             PubsubName = ServiceName.Dapr.PubSub,
             Name = nameof(InventoryReducedQuantityIntegrationEvent).ToLowerInvariant()

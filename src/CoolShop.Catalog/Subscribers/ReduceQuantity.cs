@@ -1,6 +1,5 @@
 ﻿using CoolShop.Catalog.Application.Products.ReduceQuantity;
 using CoolShop.Catalog.Domain.IntegrationEvents;
-using Dapr;
 
 namespace CoolShop.Catalog.Subscribers;
 

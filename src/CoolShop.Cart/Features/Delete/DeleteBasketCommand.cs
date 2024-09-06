@@ -1,22 +1,25 @@
-﻿namespace CoolShop.Cart.Features.Delete;
+﻿using CoolShop.Cart.IntegrationEvents;
 
-public sealed class DeleteBasketCommand : ICommand<Result>;
+namespace CoolShop.Cart.Features.Delete;
 
-public sealed class DeleteBasketHandler(DaprClient daprClient, IIdentityService identityService)
-    : ICommandHandler<DeleteBasketCommand, Result>
+public sealed record DeleteBasketCommand(string BasketId) : ICommand<Result>;
+
+public sealed class DeleteBasketCommandHandler(DaprClient daprClient) : ICommandHandler<DeleteBasketCommand, Result>
 {
     public async Task<Result> Handle(DeleteBasketCommand request, CancellationToken cancellationToken)
     {
-        var customerId = identityService.GetUserIdentity();
-
-        Guard.Against.NullOrEmpty(customerId);
-
-        var state = await daprClient.GetStateEntryAsync<BasketDto>(ServiceName.Dapr.StateStore, customerId,
+        var state = await daprClient.GetStateEntryAsync<BasketDto>(ServiceName.Dapr.StateStore, request.BasketId,
             cancellationToken: cancellationToken);
 
-        Guard.Against.NotFound(customerId, state);
+        Guard.Against.NotFound(request.BasketId, state);
 
         await state.DeleteAsync(cancellationToken: cancellationToken);
+
+        await daprClient.PublishEventAsync(
+            ServiceName.Dapr.PubSub,
+            nameof(BasketUpdatedIntegrationEvent).ToLowerInvariant(),
+            new BasketUpdatedIntegrationEvent(),
+            cancellationToken);
 
         return Result.Success();
     }

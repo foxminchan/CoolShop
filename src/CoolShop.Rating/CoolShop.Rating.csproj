@@ -1,6 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
+    <PackageReference Include="Dapr.Workflow" />
+    <PackageReference Include="Dapr.AspNetCore" />
+    <PackageReference Include="Aspire.Keycloak.Authentication" />
+    <PackageReference Include="Aspire.MongoDB.Driver" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CoolShop.Constants\CoolShop.Constants.csproj" />
     <ProjectReference Include="..\CoolShop.ServiceDefaults\CoolShop.ServiceDefaults.csproj" />
   </ItemGroup>

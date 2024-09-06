@@ -1,7 +1,4 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-
-namespace CoolShop.Shared.Converters;
+﻿namespace CoolShop.Shared.Converters;
 
 public sealed class StringTrimmerJsonConverter : JsonConverter<string>
 {

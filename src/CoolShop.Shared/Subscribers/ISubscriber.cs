@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Routing;
-
-namespace CoolShop.Shared.Subscribers;
+﻿namespace CoolShop.Shared.Subscribers;
 
 public interface ISubscriber
 {

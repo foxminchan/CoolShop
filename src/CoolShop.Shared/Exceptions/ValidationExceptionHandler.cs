@@ -1,9 +1,4 @@
 ﻿using Ardalis.Result;
-using FluentValidation;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace CoolShop.Shared.Exceptions;
 

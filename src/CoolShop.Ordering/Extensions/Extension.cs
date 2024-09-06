@@ -46,10 +46,12 @@ internal static class Extension
         builder.Services.AddDaprWorkflow(options =>
         {
             options.RegisterWorkflow<CreateOrderWorkflow>();
+            options.RegisterWorkflow<CancelOrderWorkflow>();
             options.RegisterActivity<NotifyActivity>();
             options.RegisterActivity<AddOrderActivity>();
-            options.RegisterActivity<CancelOrderActivity>();
+            options.RegisterActivity<RefundOrderActivity>();
             options.RegisterActivity<RetrieveBasketActivity>();
+            options.RegisterActivity<CancelOrderActivity>();
         });
     }
 }

@@ -2,7 +2,12 @@
 
 namespace CoolShop.Ordering.Features.Buyers.Create;
 
-public sealed record CreateBuyerRequest(string? Street, string? City, string? Province);
+public sealed record CreateBuyerRequest(
+    string? PhoneNumber,
+    string? Email,
+    string? Street,
+    string? City,
+    string? Province);
 
 public sealed class CreateBuyerEndpoint : IEndpoint<Created<Guid>, CreateBuyerRequest, ISender>
 {
@@ -20,8 +25,14 @@ public sealed class CreateBuyerEndpoint : IEndpoint<Created<Guid>, CreateBuyerRe
     public async Task<Created<Guid>> HandleAsync(CreateBuyerRequest request, ISender sender,
         CancellationToken cancellationToken = default)
     {
-        var result = await sender.Send(new CreateBuyerCommand(request.Street, request.City, request.Province),
-            cancellationToken);
+        var command = new CreateBuyerCommand(
+            request.PhoneNumber,
+            request.Email,
+            request.Street,
+            request.City,
+            request.Province);
+
+        var result = await sender.Send(command, cancellationToken);
 
         return TypedResults.Created($"/api/v1/buyer/{result.Value}", result.Value);
     }

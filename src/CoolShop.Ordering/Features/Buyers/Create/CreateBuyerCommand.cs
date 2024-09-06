@@ -2,8 +2,12 @@
 
 namespace CoolShop.Ordering.Features.Buyers.Create;
 
-public sealed record CreateBuyerCommand(string? Street, string? City, string? Province)
-    : ICommand<Result<Guid>>;
+public sealed record CreateBuyerCommand(
+    string? PhoneNumber,
+    string? Email,
+    string? Street,
+    string? City,
+    string? Province) : ICommand<Result<Guid>>;
 
 public sealed class CreateBuyerHandler(IRepository<Buyer> repository, IIdentityService identityService)
     : ICommandHandler<CreateBuyerCommand, Result<Guid>>
@@ -18,7 +22,15 @@ public sealed class CreateBuyerHandler(IRepository<Buyer> repository, IIdentityS
 
         Guard.Against.Null(fullName);
 
-        var buyer = new Buyer(Guid.Parse(buyerId), fullName, request.Street, request.City, request.Province);
+        var email = request.Email ?? identityService.GetEmail();
+
+        var buyer = new Buyer(
+            Guid.Parse(buyerId),
+            fullName,
+            request.PhoneNumber,
+            email, request.Street,
+            request.City,
+            request.Province);
 
         var result = await repository.AddAsync(buyer, cancellationToken);
 

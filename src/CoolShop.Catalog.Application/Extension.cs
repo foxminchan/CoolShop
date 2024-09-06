@@ -27,9 +27,12 @@ public static class Extension
         builder.Services.AddDaprWorkflow(options =>
         {
             options.RegisterWorkflow<ReduceQuantityWorkflow>();
+            options.RegisterWorkflow<IncreaseQuantityWorkflow>();
             options.RegisterActivity<RetrieveInventoryActivity>();
             options.RegisterActivity<SetOutStockProductActivity>();
-            options.RegisterActivity<UpdateInventoryActivity>();
+            options.RegisterActivity<SetInStockProductActivity>();
+            options.RegisterActivity<ReduceInventoryActivity>();
+            options.RegisterActivity<IncreaseInventoryActivity>();
         });
     }
 }

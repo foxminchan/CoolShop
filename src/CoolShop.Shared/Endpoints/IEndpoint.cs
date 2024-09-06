@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Routing;
-
-namespace CoolShop.Shared.Endpoints;
+﻿namespace CoolShop.Shared.Endpoints;
 
 public interface IEndpoint
 {

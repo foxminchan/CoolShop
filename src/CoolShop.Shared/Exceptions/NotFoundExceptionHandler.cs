@@ -1,10 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-
-namespace CoolShop.Shared.Exceptions;
+﻿namespace CoolShop.Shared.Exceptions;
 
 public sealed class NotFoundExceptionHandler(ILogger<NotFoundExceptionHandler> logger) : IExceptionHandler
 {

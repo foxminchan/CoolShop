@@ -1,13 +1,15 @@
-﻿using CoolShop.ServiceDefaults;
+﻿var builder = WebApplication.CreateBuilder(args);
 
-var builder = WebApplication.CreateBuilder(args);
-
-builder.AddServiceDefaults();
-
-builder.Services.AddHttpContextAccessor();
+builder.AddApplicationServices();
 
 var app = builder.Build();
 
+app.UseExceptionHandler();
+
+app.MapEndpoints();
+
 app.MapDefaultEndpoints();
+
+app.UseOpenApi();
 
 app.Run();

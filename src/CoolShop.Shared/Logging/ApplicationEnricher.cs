@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Diagnostics.Enrichment;
+﻿using Microsoft.Extensions.Diagnostics.Enrichment;
 
 namespace CoolShop.Shared.Logging;
 

@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace CoolShop.Shared.ActivityScope;
+﻿namespace CoolShop.Shared.ActivityScope;
 
 public sealed record StartActivityOptions
 {

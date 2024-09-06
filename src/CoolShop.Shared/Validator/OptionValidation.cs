@@ -1,8 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-
-namespace CoolShop.Shared.Validator;
+﻿namespace CoolShop.Shared.Validator;
 
 public sealed class OptionValidation<TOption>(IServiceProvider serviceProvider)
     : IValidateOptions<TOption> where TOption : class

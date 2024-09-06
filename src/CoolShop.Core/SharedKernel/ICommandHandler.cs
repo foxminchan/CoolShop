@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace CoolShop.Core.SharedKernel;
+﻿namespace CoolShop.Core.SharedKernel;
 
 public interface ICommandHandler<in TCommand, TResponse> : IRequestHandler<TCommand, TResponse>
     where TCommand : ICommand<TResponse>;

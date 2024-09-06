@@ -1,12 +1,4 @@
-﻿using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using Swashbuckle.AspNetCore.SwaggerGen;
-
-namespace CoolShop.ServiceDefaults;
+﻿namespace CoolShop.ServiceDefaults;
 
 public static class OpenApiExtension
 {

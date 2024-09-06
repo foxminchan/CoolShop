@@ -6,6 +6,7 @@ public static class EntityToDto
 {
     public static BuyerDto ToDto(this Buyer buyer)
     {
-        return new(buyer.Id, buyer.Name, $"{buyer.Address?.Street}, {buyer.Address?.City}, {buyer.Address?.Province}");
+        var address = $"{buyer.Address?.Street}, {buyer.Address?.City}, {buyer.Address?.Province}";
+        return new(buyer.Id, buyer.Name, buyer.Email, buyer.PhoneNumber, address);
     }
 }

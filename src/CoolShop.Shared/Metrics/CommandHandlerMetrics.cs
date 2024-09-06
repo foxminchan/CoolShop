@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Diagnostics.Metrics;
-using CoolShop.Shared.ActivityScope;
+﻿using CoolShop.Shared.ActivityScope;
 using CoolShop.Shared.OpenTelemetry;
 
 namespace CoolShop.Shared.Metrics;

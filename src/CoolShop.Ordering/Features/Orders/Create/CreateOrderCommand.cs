@@ -13,13 +13,11 @@ public sealed class CreateOrderHandler(IIdentityService identityService, DaprWor
 
         Guard.Against.NullOrEmpty(buyerId);
 
-        var email = identityService.GetEmail();
-
         var instanceId = Guid.NewGuid();
 
         await daprWorkflowClient.ScheduleNewWorkflowAsync(
             nameof(CreateOrderWorkflow),
-            input: new CreateOrderWorkflowRequest(Guid.Parse(buyerId), email, request.Note, request.PaymentMethod),
+            input: new CreateOrderWorkflowRequest(Guid.Parse(buyerId), request.Note, request.PaymentMethod),
             instanceId: instanceId.ToString());
 
         return instanceId;

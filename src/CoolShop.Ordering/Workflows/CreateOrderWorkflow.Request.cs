@@ -2,4 +2,4 @@
 
 namespace CoolShop.Ordering.Workflows;
 
-public sealed record CreateOrderWorkflowRequest(Guid BuyerId, string? Email, string? Note, PaymentMethod PaymentMethod);
+public sealed record CreateOrderWorkflowRequest(Guid BuyerId, string? Note, PaymentMethod PaymentMethod);

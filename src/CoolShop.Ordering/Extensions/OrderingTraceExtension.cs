@@ -5,8 +5,8 @@ internal static partial class OrderingTraceExtension
     [LoggerMessage(EventId = 0, Level = LogLevel.Information, Message = "[[{Event}] - Order {OrderId} created")]
     public static partial void LogOrderCreated(ILogger logger, string? @event, Guid orderId);
 
-    [LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = "[[{Event}] - Order {OrderId} completed")]
-    public static partial void LogOrderCompleted(ILogger logger, string? @event, Guid orderId);
+    [LoggerMessage(EventId = 1, Level = LogLevel.Information, Message = "[[{Event}] - Order {OrderId} shipped")]
+    public static partial void LogOrderShipped(ILogger logger, string? @event, Guid orderId);
 
     [LoggerMessage(EventId = 2, Level = LogLevel.Information, Message = "[[{Event}] - Order {OrderId} cancelled")]
     public static partial void LogOrderCancelled(ILogger logger, string? @event, Guid orderId);

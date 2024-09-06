@@ -24,6 +24,9 @@ internal sealed class OrderConfiguration : BaseConfiguration<Order>
         builder.Navigation(x => x.OrderItems)
             .AutoInclude();
 
+        builder.Navigation(x => x.Buyer)
+            .AutoInclude();
+
         builder.HasQueryFilter(x => !x.IsDeleted);
     }
 }

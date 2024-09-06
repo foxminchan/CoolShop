@@ -39,7 +39,7 @@ public sealed class AddOrderActivity(IRepository<Order> repository, ILoggerFacto
                 _logger.LogWarning("[{Activity}] - Failed to acquire lock for order {OrderId} and user {UserId}",
                     nameof(AddOrderActivity), order.Id, order.BuyerId);
 
-                throw new InvalidOperationException("Failed to acquire lock for order");
+                return new(Guid.Empty, null, false);
             }
         }
 
@@ -61,6 +61,6 @@ public sealed class AddOrderActivity(IRepository<Order> repository, ILoggerFacto
         _logger.LogInformation("[{Activity}] - Published {Event} event", nameof(AddOrderActivity),
             nameof(CatalogReducedQuantityIntegrationEvent));
 
-        return new(result.Id, true);
+        return new(result.Id, result.Buyer?.Email, true);
     }
 }

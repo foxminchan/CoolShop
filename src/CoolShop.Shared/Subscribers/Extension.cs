@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-namespace CoolShop.Shared.Subscribers;
+﻿namespace CoolShop.Shared.Subscribers;
 
 public static class Extension
 {

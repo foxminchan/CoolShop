@@ -34,8 +34,13 @@ namespace CoolShop.Ordering.Infrastructure.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 43, 10, 570, DateTimeKind.Utc).AddTicks(4566))
+                        .HasDefaultValue(new DateTime(2024, 9, 6, 11, 35, 14, 189, DateTimeKind.Utc).AddTicks(7547))
                         .HasColumnName("created_date");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
+                        .HasColumnName("email");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean")
@@ -47,10 +52,16 @@ namespace CoolShop.Ordering.Infrastructure.Data.Migrations
                         .HasColumnType("character varying(100)")
                         .HasColumnName("name");
 
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("phone_number");
+
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 43, 10, 570, DateTimeKind.Utc).AddTicks(4826))
+                        .HasDefaultValue(new DateTime(2024, 9, 6, 11, 35, 14, 189, DateTimeKind.Utc).AddTicks(7795))
                         .HasColumnName("update_date");
 
                     b.Property<Guid>("Version")
@@ -79,7 +90,7 @@ namespace CoolShop.Ordering.Infrastructure.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 43, 10, 572, DateTimeKind.Utc).AddTicks(508))
+                        .HasDefaultValue(new DateTime(2024, 9, 6, 11, 35, 14, 192, DateTimeKind.Utc).AddTicks(4749))
                         .HasColumnName("created_date");
 
                     b.Property<bool>("IsDeleted")
@@ -102,7 +113,7 @@ namespace CoolShop.Ordering.Infrastructure.Data.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 43, 10, 572, DateTimeKind.Utc).AddTicks(720))
+                        .HasDefaultValue(new DateTime(2024, 9, 6, 11, 35, 14, 192, DateTimeKind.Utc).AddTicks(4961))
                         .HasColumnName("update_date");
 
                     b.Property<Guid>("Version")
@@ -130,7 +141,7 @@ namespace CoolShop.Ordering.Infrastructure.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 43, 10, 572, DateTimeKind.Utc).AddTicks(3031))
+                        .HasDefaultValue(new DateTime(2024, 9, 6, 11, 35, 14, 192, DateTimeKind.Utc).AddTicks(9511))
                         .HasColumnName("created_date");
 
                     b.Property<Guid>("OrderId")
@@ -152,7 +163,7 @@ namespace CoolShop.Ordering.Infrastructure.Data.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasDefaultValue(new DateTime(2024, 9, 4, 14, 43, 10, 572, DateTimeKind.Utc).AddTicks(3206))
+                        .HasDefaultValue(new DateTime(2024, 9, 6, 11, 35, 14, 192, DateTimeKind.Utc).AddTicks(9698))
                         .HasColumnName("update_date");
 
                     b.Property<Guid>("Version")

@@ -1,5 +1,4 @@
-﻿using Ardalis.Specification;
-using CoolShop.Core.SeedWork;
+﻿using CoolShop.Core.SeedWork;
 
 namespace CoolShop.Core.SharedKernel;
 

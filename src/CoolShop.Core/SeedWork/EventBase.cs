@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace CoolShop.Core.SeedWork;
+﻿namespace CoolShop.Core.SeedWork;
 
 public abstract class EventBase : INotification
 {

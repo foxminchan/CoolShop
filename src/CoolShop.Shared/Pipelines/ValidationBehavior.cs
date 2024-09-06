@@ -1,11 +1,6 @@
-﻿using System.Text.Json;
-using CoolShop.Shared.ActivityScope;
+﻿using CoolShop.Shared.ActivityScope;
 using CoolShop.Shared.OpenTelemetry;
 using CoolShop.Shared.Validator;
-using FluentValidation;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace CoolShop.Shared.Pipelines;
 

@@ -9,6 +9,7 @@ global using CoolShop.Shared.Endpoints;
 global using CoolShop.Shared.Exceptions;
 global using CoolShop.Shared.Subscribers;
 global using CoolShop.Shared.Versioning;
+global using Dapr;
 global using MediatR;
 global using Microsoft.AspNetCore.Http.HttpResults;
 global using Microsoft.AspNetCore.Http.Json;

@@ -26,6 +26,8 @@ public sealed class Order : EntityBase, IAggregateRoot, ISoftDelete
     public Buyer? Buyer { get; private set; } = default!;
 
     public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
+
+    public decimal TotalPrice => _orderItems.Sum(x => x.Price * x.Quantity);
     public bool IsDeleted { get; set; }
 
     public void Delete()

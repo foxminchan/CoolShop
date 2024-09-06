@@ -1,6 +1,6 @@
 ﻿namespace CoolShop.Catalog.Domain.IntegrationEvents;
 
-public sealed class InventoryUpdatedIntegrationEvent(Dictionary<Guid, bool> isOutOfStock)
+public sealed class InventoryUpdatedIntegrationEvent(Dictionary<Guid, bool> productStatus) : IntegrationEvent
 {
-    public Dictionary<Guid, bool> IsOutOfStock { get; init; } = isOutOfStock;
+    public Dictionary<Guid, bool> ProductStatus { get; init; } = productStatus;
 }

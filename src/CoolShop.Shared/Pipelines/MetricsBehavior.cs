@@ -1,9 +1,6 @@
-﻿using System.Reflection;
-using CoolShop.Shared.ActivityScope;
+﻿using CoolShop.Shared.ActivityScope;
 using CoolShop.Shared.Metrics;
 using CoolShop.Shared.OpenTelemetry;
-using MediatR;
-using Microsoft.Extensions.Logging;
 
 namespace CoolShop.Shared.Pipelines;
 

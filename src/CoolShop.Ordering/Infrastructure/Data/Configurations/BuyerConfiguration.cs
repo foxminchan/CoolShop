@@ -28,13 +28,17 @@ internal sealed class BuyerConfiguration : BaseConfiguration<Buyer>
                 .HasMaxLength(DataSchemaLength.Medium);
         }).UsePropertyAccessMode(PropertyAccessMode.Property);
 
+        builder.Property(e => e.Email)
+            .HasMaxLength(DataSchemaLength.Medium);
+
+        builder.Property(e => e.PhoneNumber)
+            .IsRequired()
+            .HasMaxLength(DataSchemaLength.Tiny);
+
         builder.HasMany(e => e.Orders)
             .WithOne(e => e.Buyer)
             .HasForeignKey(e => e.BuyerId)
             .OnDelete(DeleteBehavior.NoAction);
-
-        builder.Navigation(x => x.Orders)
-            .AutoInclude();
 
         builder.HasQueryFilter(x => !x.IsDeleted);
     }

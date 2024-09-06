@@ -21,7 +21,7 @@ public sealed class ReduceQuantityAvailableHandler(IRepository<InventoryModel> r
             }
         });
 
-        Dictionary<Guid, bool> isOutOfStock = inventories
+        var isOutOfStock = inventories
             .Where(inventory => inventory.QuantityAvailable == 0)
             .ToDictionary(inventory => inventory.Id, _ => true);
 

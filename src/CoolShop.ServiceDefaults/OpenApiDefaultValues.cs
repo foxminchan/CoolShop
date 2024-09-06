@@ -1,9 +1,4 @@
-﻿using System.Text.Json;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-
-namespace CoolShop.ServiceDefaults;
+﻿namespace CoolShop.ServiceDefaults;
 
 internal sealed class OpenApiDefaultValues : IOperationFilter
 {

@@ -28,6 +28,7 @@ internal static class Extension
         builder.AddOpenApi();
         builder.AddVersioning();
         builder.AddEndpoints(typeof(global::Program));
+        builder.AddSubscribers(typeof(global::Program));
 
         builder.Services.AddGrpc(options =>
         {

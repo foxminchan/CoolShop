@@ -53,23 +53,23 @@ public sealed class CreateOrderWorkflow : Workflow<CreateOrderWorkflowRequest, C
 
                 await context.CallActivityAsync(
                     nameof(NotifyActivity),
-                    new NotifyActivityData(input.Email, message),
+                    new NotifyActivityData(order.BuyerEmail, message),
                     retryOptions);
             }
             catch (TaskCanceledException)
             {
-                return await HandleOrderCancellationAsync(context, order.OrderId, input.Email,
+                return await HandleOrderCancellationAsync(context, order.OrderId, order.BuyerEmail,
                     "Catalog and basket update failed due to timeout", retryOptions);
             }
             catch (Exception ex) when (ex.InnerException is TaskFailedException)
             {
-                return await HandleOrderCancellationAsync(context, order.OrderId, input.Email,
+                return await HandleOrderCancellationAsync(context, order.OrderId, order.BuyerEmail,
                     "Catalog and basket update failed due to exception", retryOptions);
             }
         }
         else
         {
-            return await HandleOrderCancellationAsync(context, order.OrderId, input.Email, "Order creation failed",
+            return await HandleOrderCancellationAsync(context, order.OrderId, order.BuyerEmail, "Order creation failed",
                 retryOptions);
         }
 
@@ -80,7 +80,7 @@ public sealed class CreateOrderWorkflow : Workflow<CreateOrderWorkflowRequest, C
         WorkflowContext context, Guid orderId, string? email, string status, WorkflowTaskOptions retryOptions)
     {
         await context.CallActivityAsync(
-            nameof(CancelOrderActivity),
+            nameof(RefundOrderActivity),
             orderId,
             retryOptions);
 

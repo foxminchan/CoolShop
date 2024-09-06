@@ -25,7 +25,7 @@ public sealed class ReduceQuantityWorkflow : Workflow<ReduceQuantityCommand, Red
             retryOptions);
 
         await context.CallActivityAsync(
-            nameof(UpdateInventoryActivity),
+            nameof(ReduceInventoryActivity),
             new Dictionary<Guid, int>(inventories));
 
         try
@@ -38,7 +38,7 @@ public sealed class ReduceQuantityWorkflow : Workflow<ReduceQuantityCommand, Red
 
             await context.CallActivityAsync(
                 nameof(SetOutStockProductActivity),
-                new Dictionary<Guid, bool>(inventoryUpdated.IsOutOfStock));
+                new Dictionary<Guid, bool>(inventoryUpdated.ProductStatus));
         }
         catch (TaskCanceledException)
         {

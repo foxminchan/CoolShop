@@ -1,9 +1,4 @@
-﻿using System.Diagnostics;
-using System.Reflection;
-using MediatR;
-using Microsoft.Extensions.Logging;
-
-namespace CoolShop.Shared.Pipelines;
+﻿namespace CoolShop.Shared.Pipelines;
 
 public sealed class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TRequest, TResponse>> logger)
     : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>

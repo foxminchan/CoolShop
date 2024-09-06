@@ -27,6 +27,6 @@ public sealed class CreateOrderEndpoint : IEndpoint<Created<Guid>, CreateOrderRe
 
         var result = await sender.Send(command, cancellationToken);
 
-        return TypedResults.Created($"/api/v1/{result.Value}", result.Value);
+        return TypedResults.Created(string.Empty, result.Value);
     }
 }
