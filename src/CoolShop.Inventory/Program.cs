@@ -12,4 +12,10 @@ app.MapDefaultEndpoints();
 
 app.UseOpenApi();
 
+app.UseCloudEvents();
+
+app.MapSubscribeHandler();
+
+app.MapSubscribers();
+
 app.Run();
