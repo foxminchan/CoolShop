@@ -13,7 +13,8 @@ public sealed class Update : IEndpoint<Ok, UpdateBrandRequest, ISender>
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithTags(nameof(Brand))
             .WithName("Update Brand")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Ok> HandleAsync(UpdateBrandRequest request, ISender sender,

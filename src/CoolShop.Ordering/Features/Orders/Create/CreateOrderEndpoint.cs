@@ -17,7 +17,8 @@ public sealed class CreateOrderEndpoint : IEndpoint<Created<Guid>, CreateOrderRe
             .ProducesValidationProblem()
             .WithTags(nameof(Order))
             .WithName("Create Order")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Created<Guid>> HandleAsync(CreateOrderRequest request, ISender sender,

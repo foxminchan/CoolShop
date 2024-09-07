@@ -1,4 +1,6 @@
-﻿namespace CoolShop.ServiceDefaults;
+﻿using CoolShop.Constants;
+
+namespace CoolShop.ServiceDefaults;
 
 public sealed class ConfigureSwaggerGenOptions(IApiVersionDescriptionProvider provider, IConfiguration config)
     : IConfigureOptions<SwaggerGenOptions>
@@ -16,7 +18,7 @@ public sealed class ConfigureSwaggerGenOptions(IApiVersionDescriptionProvider pr
         });
         options.CustomSchemaIds(type => type.ToString());
 
-        //ConfigureAuthorization(options);
+        ConfigureAuthorization(options);
     }
 
     private OpenApiInfo CreateInfoForApiVersion(ApiVersionDescription description)
@@ -116,5 +118,50 @@ public sealed class ConfigureSwaggerGenOptions(IApiVersionDescriptionProvider pr
         }
 
         return text.ToString();
+    }
+
+    private void ConfigureAuthorization(SwaggerGenOptions options)
+    {
+        var url = config["services:keycloak:http:0"];
+
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            return;
+        }
+
+        options.CustomSchemaIds(id => id.FullName!.Replace("+", "-"));
+
+        options.AddSecurityDefinition(ServiceName.Keycloak,
+            new()
+            {
+                Type = SecuritySchemeType.OAuth2,
+                Flows = new()
+                {
+                    Implicit = new()
+                    {
+                        AuthorizationUrl = new($"{url}/realms/{nameof(CoolShop)}/protocol/openid-connect/auth"),
+                        Scopes = new Dictionary<string, string>
+                        {
+                            { "openid", "openid" }, { "profile", "profile" }
+                        }
+                    }
+                }
+            });
+
+        var securityRequirement = new OpenApiSecurityRequirement
+        {
+            {
+                new()
+                {
+                    Reference = new() { Id = ServiceName.Keycloak, Type = ReferenceType.SecurityScheme, },
+                    In = ParameterLocation.Header,
+                    Name = "Bearer",
+                    Scheme = "Bearer",
+                },
+                []
+            }
+        };
+
+        options.AddSecurityRequirement(securityRequirement);
     }
 }

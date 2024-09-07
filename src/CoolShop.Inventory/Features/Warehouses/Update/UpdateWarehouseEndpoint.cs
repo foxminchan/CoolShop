@@ -15,7 +15,8 @@ public sealed class UpdateWarehouseEndpoint : IEndpoint<Ok, UpdateWarehouseReque
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithTags(nameof(Warehouse))
             .WithName("Update Warehouse")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Ok> HandleAsync(UpdateWarehouseRequest request, ISender sender,

@@ -5,7 +5,7 @@ This demo showcases an e-commerce application built using several microservices 
 </p>
 
 <div>
-  <a href="https://github.com/foxminchan/CoolShop?quickstart=1">
+  <a href="https://codespaces.new/foxminchan/CoolShop?quickstart=1">
     <img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg">
   </a>
 </div>

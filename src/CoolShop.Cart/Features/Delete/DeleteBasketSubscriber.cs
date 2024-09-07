@@ -1,5 +1,4 @@
 ﻿using CoolShop.Cart.IntegrationEvents;
-using Dapr;
 
 namespace CoolShop.Cart.Features.Delete;
 

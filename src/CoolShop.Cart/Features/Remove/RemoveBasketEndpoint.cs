@@ -10,7 +10,8 @@ public sealed class RemoveBasketEndpoint : IEndpoint<NoContent, ISender>
             .WithTags(nameof(Basket))
             .WithName("Delete Basket")
             .WithDescription("Buyer can delete his/her basket")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<NoContent> HandleAsync(ISender request, CancellationToken cancellationToken = default)

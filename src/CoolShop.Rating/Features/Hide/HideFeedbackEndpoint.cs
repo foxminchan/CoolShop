@@ -10,7 +10,8 @@ public sealed class HideFeedbackEndpoint : IEndpoint<Ok, ObjectId, ISender>
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithTags(nameof(Feedback))
             .WithName("Hide Feedback")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Ok> HandleAsync(ObjectId id, ISender sender, CancellationToken cancellationToken = default)

@@ -53,5 +53,16 @@ internal static class Extension
             options.RegisterActivity<RetrieveBasketActivity>();
             options.RegisterActivity<CancelOrderActivity>();
         });
+
+        builder.Services.AddAuthentication()
+            .AddKeycloakJwtBearer(ServiceName.Keycloak,
+                realm: nameof(CoolShop),
+                options =>
+                {
+                    options.Audience = ServiceName.AppId.Cart;
+                    options.RequireHttpsMetadata = false;
+                });
+
+        builder.Services.AddAuthorization();
     }
 }

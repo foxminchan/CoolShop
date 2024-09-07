@@ -8,8 +8,11 @@
     "ghcr.io/devcontainers/features/powershell:1": { "version": "latest" },
     "ghcr.io/azure/azure-dev/azd:0": { "version": "latest" },
     "ghcr.io/devcontainers/features/common-utils:2": {},
-    "ghcr.io/prom3theu5/aspirational-manifests/aspirate:latest": {}
+    "ghcr.io/prom3theu5/aspirational-manifests/aspirate:latest": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/python:1": {},
+    "ghcr.io/jungaretti/features/make:1": {}
   },
-  "onCreateCommand": "dapr uninstall --all && dapr init",
+  "onCreateCommand": "dapr uninstall --all && dapr init && make run",
   "postCreateCommand": "dotnet restore"
 }

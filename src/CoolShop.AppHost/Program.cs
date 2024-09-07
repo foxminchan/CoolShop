@@ -29,21 +29,23 @@ var ratingDb = mongodb.AddDatabase(ServiceName.Database.Rating);
 
 var storage = builder.AddAzureStorage("storage");
 
+var keycloak = builder
+    .AddKeycloak(ServiceName.Keycloak, 8000, adminUsername, adminPassword)
+    .WithArgs("--features=preview")
+    .WithDataBindMount("../../mnt/keycloak");
+
 if (builder.Environment.IsDevelopment())
 {
     storage.RunAsEmulator(config => config
         .WithImageTag("3.30.0")
         .WithDataBindMount("../../mnt/azurite"));
+
+    keycloak.WithRealmImport("../../keycloak");
 }
 
 var blobs = storage.AddBlobs(ServiceName.Blob);
 
 var completion = builder.AddOllama(ServiceName.Completion, enableGpu: true).WithDataVolume();
-
-var keycloak = builder
-    .AddKeycloak(ServiceName.Keycloak, 8000, adminUsername, adminPassword)
-    .WithArgs("--features=preview")
-    .WithDataBindMount("../../mnt/keycloak");
 
 var pubsub = builder.AddDaprPubSub(ServiceName.Dapr.PubSub,
     new() { LocalPath = Path.Combine(Directory.GetCurrentDirectory(), "../../dapr/components/pubsub.yaml") });

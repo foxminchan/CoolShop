@@ -13,7 +13,8 @@ public sealed class Delete : IEndpoint<NoContent, Guid, ISender>
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithTags(nameof(Product))
             .WithName("Delete Product")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<NoContent> HandleAsync(Guid id, ISender sender,

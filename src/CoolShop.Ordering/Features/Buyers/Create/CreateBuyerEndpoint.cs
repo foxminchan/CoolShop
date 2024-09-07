@@ -19,7 +19,8 @@ public sealed class CreateBuyerEndpoint : IEndpoint<Created<Guid>, CreateBuyerRe
             .ProducesValidationProblem()
             .WithTags(nameof(Buyer))
             .WithName("Create Buyer")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Created<Guid>> HandleAsync(CreateBuyerRequest request, ISender sender,

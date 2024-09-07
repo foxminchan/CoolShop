@@ -13,7 +13,8 @@ public sealed class UpdateInventoryEndpoint : IEndpoint<Ok, UpdateInventoryReque
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithTags(nameof(Inventory))
             .WithName("Update Inventory")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Ok> HandleAsync(UpdateInventoryRequest request, ISender sender,

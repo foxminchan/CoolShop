@@ -13,7 +13,8 @@ public sealed class ReduceItemQuantityEndpoint : IEndpoint<Ok, ReduceItemQuantit
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithTags(nameof(Basket))
             .WithName("Reduce Item Quantity")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Ok> HandleAsync(ReduceItemQuantityRequest request, ISender sender,

@@ -18,7 +18,8 @@ public sealed class ListOrdersEndpoint : IEndpoint<Ok<ListOrdersResponse>, ListO
             .ProducesValidationProblem()
             .WithTags(nameof(Order))
             .WithName("List Order")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Ok<ListOrdersResponse>> HandleAsync(ListOrdersRequest request, ISender sender,

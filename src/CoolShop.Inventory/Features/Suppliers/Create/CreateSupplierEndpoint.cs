@@ -14,7 +14,8 @@ public sealed class CreateSupplierEndpoint : IEndpoint<Created<Guid>, CreateSupp
             .ProducesValidationProblem()
             .WithTags(nameof(Supplier))
             .WithName("Create Suppliers")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Created<Guid>> HandleAsync(CreateSupplierRequest request, ISender sender,

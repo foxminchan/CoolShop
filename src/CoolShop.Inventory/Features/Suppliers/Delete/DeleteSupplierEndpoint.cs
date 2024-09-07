@@ -12,7 +12,8 @@ public sealed class DeleteSupplierEndpoint : IEndpoint<NoContent, Guid, ISender>
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithTags(nameof(Supplier))
             .WithName("Delete Supplier")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<NoContent> HandleAsync(Guid id, ISender sender,

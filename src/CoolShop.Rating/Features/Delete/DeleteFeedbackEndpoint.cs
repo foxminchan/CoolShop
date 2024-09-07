@@ -10,7 +10,8 @@ public sealed class DeleteFeedbackEndpoint : IEndpoint<NoContent, ObjectId, ISen
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithTags(nameof(Feedback))
             .WithName("Delete Feedback")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<NoContent> HandleAsync(ObjectId id, ISender sender, CancellationToken cancellationToken = default)

@@ -12,7 +12,8 @@ public sealed class Create : IEndpoint<Created<Guid>, CreateBrandRequest, ISende
             .ProducesValidationProblem()
             .WithTags(nameof(Brand))
             .WithName("Create Brand")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Created<Guid>> HandleAsync(CreateBrandRequest request, ISender sender,

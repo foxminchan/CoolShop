@@ -29,7 +29,8 @@ public sealed class Create : IEndpoint<Created<Guid>, CreateProductRequest, ISen
             .DisableAntiforgery()
             .WithTags(nameof(Product))
             .WithName("Create Product")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Created<Guid>> HandleAsync(CreateProductRequest request, ISender sender,

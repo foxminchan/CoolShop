@@ -2,7 +2,7 @@
 
 public sealed record CancelOrderCommand(Guid Id) : ICommand<Result>;
 
-public sealed class CancelOrderCommandHandler(DaprWorkflowClient daprWorkflowClient)
+public sealed class CancelOrderHandler(DaprWorkflowClient daprWorkflowClient)
     : ICommandHandler<CancelOrderCommand, Result>
 {
     public async Task<Result> Handle(CancelOrderCommand command, CancellationToken cancellationToken)

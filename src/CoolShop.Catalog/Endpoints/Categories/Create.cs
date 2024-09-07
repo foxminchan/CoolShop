@@ -12,7 +12,8 @@ public sealed class Create : IEndpoint<Created<Guid>, CreateCategoryRequest, ISe
             .ProducesValidationProblem()
             .WithTags(nameof(Category))
             .WithName("Create Category")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Created<Guid>> HandleAsync(CreateCategoryRequest request, ISender sender,

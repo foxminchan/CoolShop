@@ -11,7 +11,8 @@ public sealed class GetOrderEndpoint : IEndpoint<Ok<OrderDetailDto>, Guid, ISend
             .Produces<Ok<OrderDetailDto>>()
             .WithTags(nameof(Order))
             .WithName("Get Order")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Ok<OrderDetailDto>> HandleAsync(Guid id, ISender sender,

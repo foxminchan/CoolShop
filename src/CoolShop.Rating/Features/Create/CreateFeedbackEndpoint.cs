@@ -12,7 +12,8 @@ public sealed class CreateFeedbackEndpoint : IEndpoint<Created<ObjectId>, Create
             .ProducesValidationProblem()
             .WithTags(nameof(Feedback))
             .WithName("Create Feedback")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Created<ObjectId>> HandleAsync(CreateFeedbackRequest request, ISender sender,

@@ -10,7 +10,8 @@ public sealed class GetBuyerEndpoint : IEndpoint<Ok<BuyerDto>, Guid, ISender>
             .Produces<Ok<BuyerDto>>()
             .WithTags(nameof(Buyer))
             .WithName("Get Buyer")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Ok<BuyerDto>> HandleAsync(Guid id, ISender sender,

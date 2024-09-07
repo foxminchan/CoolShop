@@ -16,7 +16,8 @@ public sealed class CreateInventoryEndpoint : IEndpoint<Created<Guid>, CreateInv
             .ProducesValidationProblem()
             .WithTags(nameof(Inventory))
             .WithName("Create Inventory")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Created<Guid>> HandleAsync(CreateInventoryRequest request, ISender sender,

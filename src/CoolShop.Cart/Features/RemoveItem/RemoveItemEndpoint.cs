@@ -10,7 +10,8 @@ public sealed class RemoveItemEndpoint : IEndpoint<NoContent, Guid, ISender>
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithTags(nameof(Basket))
             .WithName("Remove Item")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<NoContent> HandleAsync(Guid productId, ISender sender,

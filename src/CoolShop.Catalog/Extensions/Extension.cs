@@ -31,5 +31,16 @@ internal static class Extension
         });
 
         builder.Services.AddDaprClient();
+
+        builder.Services.AddAuthentication()
+            .AddKeycloakJwtBearer(ServiceName.Keycloak,
+                realm: nameof(CoolShop),
+                options =>
+                {
+                    options.Audience = ServiceName.AppId.Cart;
+                    options.RequireHttpsMetadata = false;
+                });
+
+        builder.Services.AddAuthorization();
     }
 }

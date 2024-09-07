@@ -29,7 +29,8 @@ public sealed class Update : IEndpoint<Ok, UpdateProductRequest, ISender>
             .DisableAntiforgery()
             .WithTags(nameof(Product))
             .WithName("Update Product")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Ok> HandleAsync(UpdateProductRequest request, ISender sender,

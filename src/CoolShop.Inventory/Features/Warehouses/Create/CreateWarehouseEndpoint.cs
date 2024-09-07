@@ -14,7 +14,8 @@ public sealed class CreateWarehouseEndpoint : IEndpoint<Created<Guid>, CreateWar
             .ProducesValidationProblem()
             .WithTags(nameof(Warehouse))
             .WithName("Create Warehouse")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Created<Guid>> HandleAsync(CreateWarehouseRequest request, ISender sender,

@@ -15,7 +15,8 @@ public sealed class UpdateSupplierEndpoint : IEndpoint<Ok, UpdateSupplierRequest
             .ProducesProblem(StatusCodes.Status404NotFound)
             .WithTags(nameof(Supplier))
             .WithName("Update Supplier")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Ok> HandleAsync(UpdateSupplierRequest request, ISender sender,

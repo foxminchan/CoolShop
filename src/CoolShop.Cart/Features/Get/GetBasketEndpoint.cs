@@ -8,7 +8,8 @@ public sealed class GetBasketEndpoint : IEndpoint<Ok<BasketDto>, ISender>
             .Produces<Ok<BasketDto>>()
             .WithTags(nameof(Basket))
             .WithName("Get Basket")
-            .MapToApiVersion(new(1, 0));
+            .MapToApiVersion(new(1, 0))
+            .RequireAuthorization();
     }
 
     public async Task<Ok<BasketDto>> HandleAsync(ISender sender, CancellationToken cancellationToken = default)

@@ -13,6 +13,7 @@ global using CoolShop.Shared.Metrics;
 global using CoolShop.Shared.Pipelines;
 global using CoolShop.Shared.Subscribers;
 global using CoolShop.Shared.Versioning;
+global using Dapr;
 global using Dapr.Client;
 global using FluentValidation;
 global using MediatR;
