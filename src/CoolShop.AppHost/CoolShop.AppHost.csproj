@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CoolShop.Cart\CoolShop.Cart.csproj" />
     <ProjectReference Include="..\CoolShop.Catalog\CoolShop.Catalog.csproj" />
+    <ProjectReference Include="..\CoolShop.Gateway\CoolShop.Gateway.csproj" />
     <ProjectReference Include="..\CoolShop.Inventory\CoolShop.Inventory.csproj" />
     <ProjectReference Include="..\CoolShop.Notification\CoolShop.Notification.csproj" />
     <ProjectReference Include="..\CoolShop.Ordering\CoolShop.Ordering.csproj" />
@@ -28,8 +29,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CoolShop.Constants\CoolShop.Constants.csproj" IsAspireProjectResource="false" />
-    <ProjectReference Include="..\CoolShop.Krakend.Hosting\CoolShop.Krakend.Hosting.csproj"
-                      IsAspireProjectResource="false" />
     <ProjectReference Include="..\CoolShop.HealthCheck.Hosting\CoolShop.HealthCheck.Hosting.csproj"
                       IsAspireProjectResource="false" />
     <ProjectReference Include="..\CoolShop.MailDev.Hosting\CoolShop.MailDev.Hosting.csproj"

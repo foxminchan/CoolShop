@@ -29,7 +29,7 @@ The CoolShop application, as depicted in the diagram, is built with .NET Core an
 
 <p align="justify">
 
-- The API gateway abstracts the client from the underlying microservices, providing a single entry point for all requests. ItIt's implemented using [Krakend](https://www.krakend.io/), a stateless, distributed, high-performance API Gateway that helps you effortlessly adopt microservices.
+- The API gateway abstracts the client from the underlying microservices, providing a single entry point for all requests. It is built with [YARP (Yet Another Reverse Proxy)](https://microsoft.github.io/reverse-proxy/) and is responsible for routing requests to the appropriate microservices.
 - For identity management, the application uses the [Keycloak](https://www.keycloak.org/) identity and access management solution. Keycloak provides a single sign-on solution for all your applications, allowing you to secure your applications and services with minimum effort.
 - The set of core backend microservices includes functionality required for an eCommerce store. Each is self-contained and independent of the others. The services include:
   - The catalog service manages the products available in the store.

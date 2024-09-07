@@ -28,6 +28,7 @@ public static class ServiceName
 
     public static class AppId
     {
+        public const string Gateway = "gateway";
         public const string Catalog = "catalog-api";
         public const string Inventory = "inventory-api";
         public const string Cart = "cart-api";

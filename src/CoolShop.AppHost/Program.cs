@@ -67,12 +67,12 @@ var daprOptions = new DaprSidecarOptions
 
 builder.AddMailDev("email", 1025);
 
-// Services
-builder.AddKrakend("gateway")
-    .WithExternalHttpEndpoints()
-    .WithConfigBindMount("../../krakend")
-    .WithEnvironment("FC_ENABLE", "1");
+// Gateway
+builder.AddProject<CoolShop_Gateway>(ServiceName.AppId.Gateway)
+    .WithReference(keycloak)
+    .WithExternalHttpEndpoints();
 
+// Services
 var catalogApi = builder
     .AddProject<CoolShop_Catalog>(ServiceName.AppId.Catalog)
     .WithDaprSidecar(daprOptions)
