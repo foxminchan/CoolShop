@@ -22,7 +22,7 @@ builder.Services.AddAuthentication(options =>
         options.Cookie.Name = "__Host-bff";
         options.Cookie.SameSite = SameSiteMode.Strict;
     })
-    .AddKeycloakOpenIdConnect(ServiceName.Keycloak, realm: nameof(CoolShop), options =>
+    .AddKeycloakOpenIdConnect(ServiceName.Keycloak, nameof(CoolShop), options =>
     {
         options.RequireHttpsMetadata = false;
         options.ClientId = ServiceName.AppId.Gateway;

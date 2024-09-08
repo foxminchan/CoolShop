@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using CoolShop.Catalog.Application.Products;
 using CoolShop.Catalog.Application.Products.Get;
+using CoolShop.Catalog.Application.Products.GetStatusRange;
 using Dapr.AppCallback.Autogen.Grpc.v1;
 using Dapr.Client.Autogen.Grpc.v1;
 using Google.Protobuf.WellKnownTypes;
@@ -42,6 +43,18 @@ public sealed class ProductService(ISender sender, ILogger<ProductService> logge
 
                 return response;
             }
+            case nameof(Product.ProductBase.GetListProductStatus):
+            {
+                var input = request.Data.Unpack<ListProductStatusRequest>();
+
+                var ids = input.Ids.Select(Guid.Parse).ToList();
+
+                var products = await RetrieveProductStatuses(ids);
+
+                response.Data = Any.Pack(MapToListProductStatusResponse(products));
+
+                return response;
+            }
             default:
                 logger.LogWarning("[{Service}] - Method not found: {Method}", nameof(ProductService), request.Method);
                 break;
@@ -68,6 +81,13 @@ public sealed class ProductService(ISender sender, ILogger<ProductService> logge
         return product.Value;
     }
 
+    private async Task<Dictionary<Guid, bool>> RetrieveProductStatuses(List<Guid> ids)
+    {
+        var products = await sender.Send(new GetStatusRangeQuery(ids));
+
+        return products.Value;
+    }
+
     [DoesNotReturn]
     private static void ThrowNotFound()
     {
@@ -89,5 +109,17 @@ public sealed class ProductService(ISender sender, ILogger<ProductService> logge
     private static ProductStatusResponse MapToProductStatusResponse(ProductDto product)
     {
         return new() { Id = product.Id.ToString(), Status = product.Status.ToString() };
+    }
+
+    private static ListProductStatusResponse MapToListProductStatusResponse(Dictionary<Guid, bool> products)
+    {
+        return new()
+        {
+            Statuses =
+            {
+                products.Select(x => new KeyValuePair<string, bool>(x.Key.ToString(), x.Value))
+                    as Dictionary<string, bool>
+            }
+        };
     }
 }

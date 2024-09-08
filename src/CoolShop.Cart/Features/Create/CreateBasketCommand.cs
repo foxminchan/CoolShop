@@ -1,6 +1,6 @@
 ﻿namespace CoolShop.Cart.Features.Create;
 
-public sealed record CreateBasketCommand(Guid ProductId, Guid CouponId, int Quantity) : ICommand<Result<string>>;
+public sealed record CreateBasketCommand(Guid ProductId, Guid? CouponId, int Quantity) : ICommand<Result<string>>;
 
 public sealed class CreateBasketHandler(DaprClient daprClient, IIdentityService identityService)
     : ICommandHandler<CreateBasketCommand, Result<string>>

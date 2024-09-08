@@ -1,6 +1,5 @@
 install-node-deps:
 	npm install
-	cd src/CoolShop.Promotion && npm install
 .PHONY: run
 
 install-python-deps:

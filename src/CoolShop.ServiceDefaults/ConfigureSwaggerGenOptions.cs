@@ -1,6 +1,4 @@
-﻿using CoolShop.Constants;
-
-namespace CoolShop.ServiceDefaults;
+﻿namespace CoolShop.ServiceDefaults;
 
 public sealed class ConfigureSwaggerGenOptions(IApiVersionDescriptionProvider provider, IConfiguration config)
     : IConfigureOptions<SwaggerGenOptions>
@@ -16,6 +14,12 @@ public sealed class ConfigureSwaggerGenOptions(IApiVersionDescriptionProvider pr
         {
             Type = "string", Format = "date", Example = new OpenApiString(DateTime.Today.ToString("yyyy-MM-dd"))
         });
+
+        options.MapType<ObjectId>(() => new()
+        {
+            Type = "string", Format = "ObjectId", Example = new OpenApiString(ObjectId.GenerateNewId().ToString())
+        });
+
         options.CustomSchemaIds(type => type.ToString());
 
         ConfigureAuthorization(options);
@@ -139,7 +143,8 @@ public sealed class ConfigureSwaggerGenOptions(IApiVersionDescriptionProvider pr
                 {
                     Implicit = new()
                     {
-                        AuthorizationUrl = new($"{url}/realms/{nameof(CoolShop)}/protocol/openid-connect/auth"),
+                        AuthorizationUrl =
+                            new($"{url}/realms/{nameof(CoolShop)}/protocol/openid-connect/auth"),
                         Scopes = new Dictionary<string, string>
                         {
                             { "openid", "openid" }, { "profile", "profile" }
@@ -153,10 +158,10 @@ public sealed class ConfigureSwaggerGenOptions(IApiVersionDescriptionProvider pr
             {
                 new()
                 {
-                    Reference = new() { Id = ServiceName.Keycloak, Type = ReferenceType.SecurityScheme, },
+                    Reference = new() { Id = ServiceName.Keycloak, Type = ReferenceType.SecurityScheme },
                     In = ParameterLocation.Header,
                     Name = "Bearer",
-                    Scheme = "Bearer",
+                    Scheme = "Bearer"
                 },
                 []
             }

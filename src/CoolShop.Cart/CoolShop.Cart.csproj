@@ -10,6 +10,7 @@
   <ItemGroup>
     <Protobuf Include="Protos\basket.proto" GrpcServices="Server" />
     <Protobuf Include="..\CoolShop.Catalog\Protos\product.proto" Link="Protos\product.proto" GrpcServices="Client" />
+    <Protobuf Include="..\CoolShop.Promotion\Protos\coupon.proto" Link="Protos\coupon.proto" GrpcServices="Client" />
   </ItemGroup>
 
   <ItemGroup>

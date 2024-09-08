@@ -13,8 +13,6 @@
   <!-- Aspire -->
   <ItemGroup>
     <PackageVersion Include="Aspire.Hosting.Dapr" Version="$(AspireVersion)" />
-    <PackageVersion Include="Aspire.Hosting.NodeJs" Version="$(AspireVersion)" />
-    <PackageVersion Include="Aspire.Hosting.Qdrant" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.Hosting.MongoDB" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="$(AspireVersion)" />
@@ -27,7 +25,7 @@
   </ItemGroup>
   <!-- Microsoft Extensions -->
   <ItemGroup>
-    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.9.0" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.9.1" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="8.2.0" />
   </ItemGroup>
   <!-- Entity Framework Core -->
@@ -83,8 +81,9 @@
   <!-- Miscellaneous -->
   <ItemGroup>
     <PackageVersion Include="Scrutor" Version="4.2.2" />
-    <PackageVersion Include="MediatR" Version="12.4.0" />
+    <PackageVersion Include="MediatR" Version="12.4.1" />
     <PackageVersion Include="AutoBogus" Version="2.13.1" />
+    <PackageVersion Include="MongoDB.Bson" Version="2.28.0" />
     <PackageVersion Include="Duende.BFF.Yarp" Version="2.2.0" />
     <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.1" />

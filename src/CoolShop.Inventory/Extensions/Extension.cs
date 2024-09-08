@@ -48,7 +48,7 @@ internal static class Extension
 
         builder.Services.AddAuthentication()
             .AddKeycloakJwtBearer(ServiceName.Keycloak,
-                realm: nameof(CoolShop),
+                nameof(CoolShop),
                 options =>
                 {
                     options.Audience = ServiceName.AppId.Cart;

@@ -294,8 +294,6 @@
       "rating-api": [],
       "security-admin-console": [],
       "inventory-api": [],
-      "ordering-api": [],
-      "admin-cli": [],
       "account-console": [],
       "broker": [
         {
@@ -308,7 +306,10 @@
           "attributes": {}
         }
       ],
+      "ordering-api": [],
+      "admin-cli": [],
       "cart-api": [],
+      "promotion-api": [],
       "account": [
         {
           "id": "5a781170-5ac5-422e-ba02-b9d582e4ab70",
@@ -853,6 +854,56 @@
       "clientAuthenticatorType": "client-secret",
       "redirectUris": ["https://localhost:7242/*"],
       "webOrigins": ["https://localhost:7242/"],
+      "notBefore": 0,
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "publicClient": true,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "oidc.ciba.grant.enabled": "false",
+        "backchannel.logout.session.required": "true",
+        "oauth2.device.authorization.grant.enabled": "false",
+        "display.on.consent.screen": "false",
+        "backchannel.logout.revoke.offline.tokens": "false"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationTimeout": -1,
+      "defaultClientScopes": [
+        "web-origins",
+        "acr",
+        "profile",
+        "roles",
+        "basic",
+        "email"
+      ],
+      "optionalClientScopes": [
+        "address",
+        "phone",
+        "organization",
+        "offline_access",
+        "microprofile-jwt"
+      ]
+    },
+    {
+      "id": "2c654254-b1b1-4b12-8103-f8bf171bebd2",
+      "clientId": "promotion-api",
+      "name": "Promotion API",
+      "description": "A Cool Shop Promotion API",
+      "rootUrl": "",
+      "adminUrl": "",
+      "baseUrl": "",
+      "surrogateAuthRequired": false,
+      "enabled": true,
+      "alwaysDisplayInConsole": false,
+      "clientAuthenticatorType": "client-secret",
+      "redirectUris": ["https://localhost:9876/*"],
+      "webOrigins": ["https://localhost:9876/"],
       "notBefore": 0,
       "bearerOnly": false,
       "consentRequired": false,

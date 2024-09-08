@@ -12,12 +12,10 @@ This demo showcases an e-commerce application built using several microservices 
 
 ## Pre-requisites to Run the Application
 
-- A device with an Nvidia GPU
 - [Install & start Docker Desktop](https://www.docker.com/products/docker-desktop)
 - [Install .NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) or later, and [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
 - [Install Dapr CLI](https://docs.dapr.io/getting-started/install-dapr-cli/)
 - [Install Node.js](https://nodejs.org/en/download/)
-- [Install Python 3.12.5](https://www.python.org/downloads/release/python-3125/)
 
 ## Architecture Overview
 
@@ -39,8 +37,8 @@ The CoolShop application, as depicted in the diagram, is built with .NET Core an
   - The promotion service manages the promotions available in the store.
   - The notification service sends notifications to users.
   - The rating service manages the ratings and reviews of products.
-- Each service integrates elements of [Clean Architecture](https://jasontaylor.dev/clean-architecture-getting-started/), [Vertical Slice Architecture](https://www.jimmybogard.com/vertical-slice-architecture/), and [Hexagonal Architecture](https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749), resulting in a clean, maintainable, and testable codebase. I implemented various frameworks for developing services, such as [.NET Core](https://dotnet.microsoft.com/), [NestJS](https://nestjs.com/), and [FastAPI](https://fastapi.tiangolo.com/).
-- Additionally, the application integrates an LLM (Large Language Model) for semantic search and chatbot functionality. The LLM is built with [Ollama](https://ollama.com/) and utilizes RAG (Retrieval-Augmented Generation) to enhance retrieval and response generation **_[This feature is under development]_**.
+- Each service integrates elements of [Clean Architecture](https://jasontaylor.dev/clean-architecture-getting-started/) and [Vertical Slice Architecture](https://www.jimmybogard.com/vertical-slice-architecture/), resulting in a clean, maintainable, and testable codebase.
+- For website development, the application uses [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) Interactive Server **_[This feature is under development]_**.
 
 </p>
 

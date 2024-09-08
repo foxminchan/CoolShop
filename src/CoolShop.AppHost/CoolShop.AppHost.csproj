@@ -9,11 +9,9 @@
   <ItemGroup>
     <PackageReference Include="Aspire.Hosting.AppHost" />
     <PackageReference Include="Aspire.Hosting.Dapr" />
-    <PackageReference Include="Aspire.Hosting.NodeJs" />
     <PackageReference Include="Aspire.Hosting.MongoDB" />
     <PackageReference Include="Aspire.Hosting.PostgreSQL" />
     <PackageReference Include="Aspire.Hosting.Keycloak" />
-    <PackageReference Include="Aspire.Hosting.Qdrant" />
     <PackageReference Include="Aspire.Hosting.Azure.Storage" />
   </ItemGroup>
 
@@ -24,6 +22,7 @@
     <ProjectReference Include="..\CoolShop.Inventory\CoolShop.Inventory.csproj" />
     <ProjectReference Include="..\CoolShop.Notification\CoolShop.Notification.csproj" />
     <ProjectReference Include="..\CoolShop.Ordering\CoolShop.Ordering.csproj" />
+    <ProjectReference Include="..\CoolShop.Promotion\CoolShop.Promotion.csproj" />
     <ProjectReference Include="..\CoolShop.Rating\CoolShop.Rating.csproj" />
   </ItemGroup>
 
@@ -32,8 +31,6 @@
     <ProjectReference Include="..\CoolShop.HealthCheck.Hosting\CoolShop.HealthCheck.Hosting.csproj"
                       IsAspireProjectResource="false" />
     <ProjectReference Include="..\CoolShop.MailDev.Hosting\CoolShop.MailDev.Hosting.csproj"
-                      IsAspireProjectResource="false" />
-    <ProjectReference Include="..\CoolShop.Ollama.Hosting\CoolShop.Ollama.Hosting.csproj"
                       IsAspireProjectResource="false" />
   </ItemGroup>
 

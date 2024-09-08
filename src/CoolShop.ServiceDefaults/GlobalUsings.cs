@@ -1,6 +1,7 @@
 global using System.Text;
 global using System.Text.Json;
 global using Asp.Versioning.ApiExplorer;
+global using CoolShop.Constants;
 global using CoolShop.Shared.ActivityScope;
 global using CoolShop.Shared.Logging;
 global using HealthChecks.UI.Client;
@@ -17,6 +18,7 @@ global using Microsoft.Extensions.Options;
 global using Microsoft.Extensions.Primitives;
 global using Microsoft.OpenApi.Any;
 global using Microsoft.OpenApi.Models;
+global using MongoDB.Bson;
 global using OpenTelemetry;
 global using OpenTelemetry.Metrics;
 global using OpenTelemetry.Trace;

@@ -1,5 +1,4 @@
-﻿using CoolShop.Cart.Extensions;
-using CoolShop.Cart.Grpc;
+﻿using CoolShop.Cart.Grpc;
 
 var builder = WebApplication.CreateBuilder(args);
 

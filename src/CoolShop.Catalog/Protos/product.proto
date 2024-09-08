@@ -6,6 +6,7 @@ package CatalogApi;
 
 service Product {
     rpc GetProduct(ProductRequest) returns (ProductResponse);
+    rpc GetListProductStatus(ListProductStatusRequest) returns (ListProductStatusResponse);
     rpc GetProductStatus(ProductStatusRequest) returns (ProductStatusResponse);
 }
 
@@ -28,4 +29,12 @@ message ProductStatusRequest {
 message ProductStatusResponse {
     string id = 1;
     string status = 2;
+}
+
+message ListProductStatusRequest {
+    repeated string ids = 1;
+}
+
+message ListProductStatusResponse {
+    map<string, bool> statuses = 1;
 }

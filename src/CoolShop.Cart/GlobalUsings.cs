@@ -1,6 +1,7 @@
 global using Ardalis.GuardClauses;
 global using Ardalis.Result;
 global using CoolShop.Cart.Domain;
+global using CoolShop.Cart.Extensions;
 global using CoolShop.Constants;
 global using CoolShop.Core.SeedWork;
 global using CoolShop.Core.SharedKernel;

@@ -10,7 +10,6 @@
     "ghcr.io/devcontainers/features/common-utils:2": {},
     "ghcr.io/prom3theu5/aspirational-manifests/aspirate:latest": {},
     "ghcr.io/devcontainers/features/node:1": {},
-    "ghcr.io/devcontainers/features/python:1": {},
     "ghcr.io/jungaretti/features/make:1": {}
   },
   "onCreateCommand": "dapr uninstall --all && dapr init && make run",

@@ -1,4 +1,5 @@
 ﻿using CoolShop.Catalog.Grpc;
+using CoolShop.Promotion.Grpc;
 
 namespace CoolShop.Cart.Features.Get;
 
@@ -40,9 +41,17 @@ public sealed class GetBasketHandler(DaprClient daprClient, IIdentityService ide
                 (decimal)product.Discount));
         }
 
+        var coupon = await daprClient.InvokeMethodAsync<GetCouponRequest, GetCouponResponse>(
+            ServiceName.AppId.Promotion,
+            nameof(Coupon.CouponClient.GetCoupon),
+            new() { PromotionId = basket.CouponId.ToString() },
+            cancellationToken);
+
         basketDto = basketDto with
         {
-            TotalPrice = basketDto.Items.Sum(x => x.PriceSale > 0 ? x.PriceSale * x.Quantity : x.Price * x.Quantity)
+            TotalPrice =
+            basketDto.Items.Sum(x => x.PriceSale > 0 ? x.PriceSale * x.Quantity : x.Price * x.Quantity) /
+            (100m * (100m - (decimal)coupon.Discount))
         };
 
         return basketDto;

@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "CoolShop.Promotion.Grpc";
+
+package PromotionApi;
+
+service Coupon {
+    rpc GetCoupon(GetCouponRequest) returns (GetCouponResponse);
+}
+
+message GetCouponRequest {
+    string promotionId = 1;
+}
+
+message GetCouponResponse {
+    string id = 1;
+    string code = 2;
+    double discount = 3;
+    Date validFrom = 4;
+    Date validaTo = 5;
+}
+
+message Date {
+    int32 year = 1;
+    int32 month = 2;
+    int32 day = 3;
+}

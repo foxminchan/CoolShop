@@ -19,12 +19,10 @@ var mongodb = builder
     .WithMongoExpress()
     .WithDataBindMount("../../mnt/mongodb");
 
-var vectorDb = builder.AddQdrant(ServiceName.Database.Vector)
-    .WithDataBindMount("../../mnt/qdrant");
 var catalogDb = postgres.AddDatabase(ServiceName.Database.Catalog);
 var inventoryDb = postgres.AddDatabase(ServiceName.Database.Inventory);
 var orderingDb = postgres.AddDatabase(ServiceName.Database.Ordering);
-var promotionDb = postgres.AddDatabase(ServiceName.Database.Promotion);
+var promotionDb = mongodb.AddDatabase(ServiceName.Database.Promotion);
 var ratingDb = mongodb.AddDatabase(ServiceName.Database.Rating);
 
 var storage = builder.AddAzureStorage("storage");
@@ -44,8 +42,6 @@ if (builder.Environment.IsDevelopment())
 }
 
 var blobs = storage.AddBlobs(ServiceName.Blob);
-
-var completion = builder.AddOllama(ServiceName.Completion, enableGpu: true).WithDataVolume();
 
 var pubsub = builder.AddDaprPubSub(ServiceName.Dapr.PubSub,
     new() { LocalPath = Path.Combine(Directory.GetCurrentDirectory(), "../../dapr/components/pubsub.yaml") });
@@ -69,6 +65,7 @@ builder.AddMailDev("email", 1025);
 
 // Gateway
 builder.AddProject<CoolShop_Gateway>(ServiceName.AppId.Gateway)
+    .WithDaprSidecar(daprOptions)
     .WithReference(keycloak)
     .WithExternalHttpEndpoints();
 
@@ -77,10 +74,8 @@ var catalogApi = builder
     .AddProject<CoolShop_Catalog>(ServiceName.AppId.Catalog)
     .WithDaprSidecar(daprOptions)
     .WithReference(pubsub)
-    .WithReference(completion)
     .WithReference(statestore)
     .WithReference(blobs)
-    .WithReference(vectorDb)
     .WithReference(catalogDb)
     .WithReference(keycloak);
 
@@ -118,18 +113,13 @@ var notificationApi = builder
     .AddProject<CoolShop_Notification>(ServiceName.AppId.Notification)
     .WithDaprSidecar(daprOptions)
     .WithReference(email)
-    .WithReference(pubsub)
-    .WithReference(statestore);
+    .WithReference(pubsub);
 
 var promotionApi = builder
-    .AddNpmApp(ServiceName.AppId.Promotion, "../CoolShop.Promotion")
+    .AddProject<CoolShop_Promotion>(ServiceName.AppId.Promotion)
     .WithDaprSidecar(daprOptions)
-    .WithReference(pubsub)
-    .WithReference(statestore)
     .WithReference(promotionDb)
-    .WithHttpEndpoint(env: "PORT")
-    .WithExternalHttpEndpoints()
-    .PublishAsDockerFile();
+    .WithReference(keycloak);
 
 // Dashboard
 builder.AddHealthChecksUi("healthchecksui")
@@ -137,8 +127,8 @@ builder.AddHealthChecksUi("healthchecksui")
     .WithReference(inventoryApi)
     .WithReference(cartApi)
     .WithReference(orderingApi)
-    .WithReference(promotionApi)
     .WithReference(ratingApi)
+    .WithReference(promotionApi)
     .WithReference(notificationApi)
     .WithExternalHttpEndpoints();
 
