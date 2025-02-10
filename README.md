@@ -8,6 +8,7 @@ This demo showcases an e-commerce application built using several microservices 
   <a href="https://codespaces.new/foxminchan/CoolShop?quickstart=1">
     <img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg">
   </a>
+   <a href="https://app.codeanywhere.com/#https://github.com/foxminchan/CoolShop" style="float:right:"><img src="https://codeanywhere.com/img/open-in-codeanywhere-btn.svg" alt="Open in Codeanywhere" loading="lazy"></a>
 </div>
 
 ## Pre-requisites to Run the Application
